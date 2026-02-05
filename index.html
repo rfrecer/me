@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robert Frecer | Operations & Product</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg: #101010;
+            --text: #E6E6E6;
+            --dim: #888888;
+            --accent: #CCFF00; /* Acid Green - Sharp & Modern */
+            --lines: #333333;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        a { color: inherit; text-decoration: none; }
+        
+        /* --- THE GRID SYSTEM --- */
+        .grid-wrapper {
+            display: grid;
+            grid-template-columns: 300px 1fr; /* Fixed Sidebar / Fluid Content */
+            min-height: 100vh;
+            border-top: 1px solid var(--lines);
+        }
+
+        /* --- SIDEBAR (Fixed Identity) --- */
+        .sidebar {
+            border-right: 1px solid var(--lines);
+            padding: 40px;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .profile-img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            filter: grayscale(100%);
+            border: 1px solid var(--lines);
+            margin-bottom: 20px;
+            transition: filter 0.3s;
+        }
+        .sidebar:hover .profile-img { filter: grayscale(0%); }
+
+        h1 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 2.5rem;
+            line-height: 1;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        .role-tag {
+            font-family: 'Space Grotesk', monospace;
+            color: var(--accent);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+            display: block;
+        }
+
+        .nav-links a {
+            display: block;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--lines);
+            transition: 0.2s;
+        }
+        .nav-links a:hover { padding-left: 10px; color: var(--accent); border-color: var(--accent); }
+
+        /* --- MAIN CONTENT AREA --- */
+        .content {
+            display: grid;
+            grid-template-rows: auto auto 1fr;
+        }
+
+        /* --- BIG STATEMENT HEADER --- */
+        .hero-statement {
+            padding: 80px 60px;
+            border-bottom: 1px solid var(--lines);
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+        }
+        .hero-statement span { color: var(--dim); }
+
+        /* --- SECTION HEADERS --- */
+        .section-label {
+            font-family: 'Space Grotesk', monospace;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            padding: 20px 60px;
+            border-bottom: 1px solid var(--lines);
+            color: var(--dim);
+            position: sticky;
+            top: 0;
+            background: var(--bg);
+            z-index: 10;
+        }
+
+        /* --- PROJECTS (The Horizontal Scroll / Grid feel) --- */
+        .projects-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* 2 Column Grid */
+        }
+
+        .project-item {
+            border-right: 1px solid var(--lines);
+            border-bottom: 1px solid var(--lines);
+            position: relative;
+            group: pointer;
+            transition: background 0.2s;
+        }
+        .project-item:nth-child(even) { border-right: none; }
+        .project-item:hover { background: #1a1a1a; }
+
+        .p-image-wrap {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            border-bottom: 1px solid var(--lines);
+        }
+        .p-image-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+            filter: grayscale(100%);
+        }
+        .project-item:hover .p-image-wrap img { transform: scale(1.05); filter: grayscale(0%); }
+
+        .p-info { padding: 30px; }
+        .p-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.5rem; margin-bottom: 5px; }
+        .p-desc { color: var(--dim); font-size: 0.9rem; margin-bottom: 15px; }
+        .p-tags span { border: 1px solid var(--lines); padding: 2px 8px; font-size: 0.7rem; margin-right: 5px; border-radius: 20px;}
+
+        /* --- EXPERIENCE LIST (Table Style) --- */
+        .exp-row {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            border-bottom: 1px solid var(--lines);
+            padding: 40px 60px;
+            transition: 0.2s;
+        }
+        .exp-row:hover { background: #1a1a1a; }
+        .exp-row:last-child { border-bottom: none; }
+
+        .exp-date { font-family: 'Space Grotesk', monospace; color: var(--accent); font-size: 0.9rem; }
+        .exp-role h3 { font-family: 'Syne', sans-serif; font-size: 1.3rem; margin-bottom: 5px; }
+        .exp-company { font-weight: 400; color: var(--text); }
+        .exp-details { margin-top: 15px; color: var(--dim); font-size: 0.95rem; max-width: 600px; }
+
+        /* --- BIBLIOGRAPHY (Compact) --- */
+        .biblio-grid {
+            padding: 40px 60px;
+            display: grid;
+            gap: 15px;
+            border-bottom: 1px solid var(--lines);
+        }
+        .citation {
+            font-family: 'Space Grotesk', monospace;
+            font-size: 0.85rem;
+            color: var(--dim);
+            padding-left: 20px;
+            border-left: 1px solid var(--lines);
+        }
+        .citation strong { color: var(--text); }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .grid-wrapper { grid-template-columns: 1fr; border-top: none; }
+            .sidebar { height: auto; position: relative; border-right: none; border-bottom: 1px solid var(--lines); padding: 30px; }
+            .hero-statement { font-size: 2rem; padding: 40px 30px; }
+            .projects-container { grid-template-columns: 1fr; }
+            .project-item { border-right: none; }
+            .section-label, .exp-row, .biblio-grid { padding-left: 30px; padding-right: 30px; }
+            .exp-row { grid-template-columns: 1fr; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="grid-wrapper">
+        
+        <aside class="sidebar">
+            <div>
+                <img src="./images/eef846f3-32a6-4e22-9beb-c49e30e04eac.png" alt="Robert Frecer" class="profile-img">
+                <h1>Robert<br>Frecer</h1>
+                <span class="role-tag">PhD / Ops Director / Dev</span>
+            </div>
+
+            <nav class="nav-links">
+                <a href="#projects">01. Projects</a>
+                <a href="#experience">02. Experience</a>
+                <a href="#education">03. Education</a>
+                <a href="https://www.linkedin.com/in/robert-frecer-924561169" target="_blank">LinkedIn ↗</a>
+                <a href="mailto:your@email.com">Email ↗</a>
+            </nav>
+
+            <div style="font-size: 0.75rem; color: var(--dim);">
+                Based in Prague.<br>
+                Available for consulting.
+            </div>
+        </aside>
+
+        <main class="content">
+            
+            <div class="hero-statement">
+                Bridging the gap between <span>Classical Archaeology</span> and <span>Technical Operations</span>. I build systems, scale teams, and design efficient digital products.
+            </div>
+
+            <div class="section-label" id="projects">01 // Selected Work</div>
+            
+            <div class="projects-container">
+                
+                <a href="https://terezfrecerova.sk/" target="_blank" class="project-item">
+                    <div class="p-image-wrap">
+                        <img src="./images/Screenshot_2026-01-21_at_14.40.04.png" alt="Terez Portfolio">
+                    </div>
+                    <div class="p-info">
+                        <div class="p-title">Terez Frecerová</div>
+                        <div class="p-desc">Bold, neobrutalist artist portfolio.</div>
+                        <div class="p-tags">
+                            <span>React.js</span>
+                            <span>Design</span>
+                            <span>2026</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://gisat.github.io/app-slim-maps/" target="_blank" class="project-item">
+                    <div class="p-image-wrap">
+                        <img src="./images/Screenshot_2026-01-21_at_14.40.50.png" alt="SLIM Maps">
+                    </div>
+                    <div class="p-info">
+                        <div class="p-title">SLIM Zambia</div>
+                        <div class="p-desc">Geospatial risk management dashboard.</div>
+                        <div class="p-tags">
+                            <span>GIS</span>
+                            <span>Data Viz</span>
+                            <span>Gov</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://rfrecer.github.io/spanodolinske-granty/" target="_blank" class="project-item">
+                    <div class="p-image-wrap">
+                        <img src="./images/Screenshot_2026-01-21_at_14.45.06.png" alt="Waterwells">
+                    </div>
+                    <div class="p-info">
+                        <div class="p-title">Špaňodolinské Granty</div>
+                        <div class="p-desc">Interactive historical preservation map.</div>
+                        <div class="p-tags">
+                            <span>Mapping</span>
+                            <span>History</span>
+                        </div>
+                    </div>
+                </a>
+
+                <div class="project-item" style="cursor: default;">
+                    <div class="p-info" style="height: 100%; display: flex; flex-direction: column; justify-content: center;">
+                        <div class="p-title" style="color: var(--dim);">Field Research</div>
+                        <div class="p-desc">
+                            > Bratislava Castle (2009)<br>
+                            > Eryx, Sicily (2013)<br>
+                            > Stroyno, Bulgaria (2015)
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="section-label" id="experience">02 // Operations History</div>
+
+            <div class="exp-row">
+                <div class="exp-date">2023 — PRES</div>
+                <div class="exp-role">
+                    <h3>Business Consultant</h3>
+                    <div class="exp-company">Gisat, Prague</div>
+                    <div class="exp-details">
+                        Designed workflows for a 35-person R&D team using Notion & Google Workspace. Leading international EO service delivery.
+                    </div>
+                </div>
+            </div>
+
+            <div class="exp-row">
+                <div class="exp-date">2022 — 2023</div>
+                <div class="exp-role">
+                    <h3>Site Director</h3>
+                    <div class="exp-company">Represent.com, Prague</div>
+                    <div class="exp-details">
+                        Directed all site operations (~20 employees). Managed full legal, payroll and regulatory responsibilities for the Czech entity.
+                    </div>
+                </div>
+            </div>
+
+            <div class="exp-row">
+                <div class="exp-date">2018 — 2023</div>
+                <div class="exp-role">
+                    <h3>Director of Ops & CX</h3>
+                    <div class="exp-company">Represent.com</div>
+                    <div class="exp-details">
+                        Product Owner for API integrations. Prepared cost-benefit analyses for major strategic initiatives.
+                    </div>
+                </div>
+            </div>
+
+            <div class="exp-row">
+                <div class="exp-date">2016 — 2018</div>
+                <div class="exp-role">
+                    <h3>Head of CX</h3>
+                    <div class="exp-company">Represent.com</div>
+                    <div class="exp-details">
+                        Built and scaled high-performing CX teams in Prague and Los Angeles. Partnered with engineering on dashboard UI.
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-label" id="education">03 // Academic Archive</div>
+
+            <div class="exp-row" style="border-bottom: 1px solid var(--lines);">
+                <div class="exp-date">2007 — 2015</div>
+                <div class="exp-role">
+                    <h3>PhD, Classical Archaeology</h3>
+                    <div class="exp-company">Charles University</div>
+                    <div class="exp-details">
+                        Thesis: <em>Gerulata: The Lamps. Roman Lamps in a Provincial Context.</em> Research on the economy of subsidiary workshops.
+                    </div>
+                </div>
+            </div>
+
+            <div class="biblio-grid">
+                <div style="font-family: 'Syne'; font-weight: 700; margin-bottom: 10px;">Selected Bibliography</div>
+                <div class="citation"><strong>Frecer, R. 2015.</strong> Gerulata: The Lamps. Roman Lamps in a Provincial Context. Prague: Karolinum.</div>
+                <div class="citation"><strong>Frecer, R. 2015.</strong> New evidence on the organization of the Roman lamp industry.</div>
+                <div class="citation"><strong>Frecer, R. 2014.</strong> A Unique Roman Upper Lamp Mold from Brigetio.</div>
+            </div>
+
+            <footer style="padding: 40px 60px; color: var(--dim); font-size: 0.8rem; border-top: 1px solid var(--lines);">
+                © 2026 Robert Frecer
+            </footer>
+
+        </main>
+    </div>
+
+</body>
+</html>
