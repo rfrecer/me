@@ -1,9 +1,41 @@
 const cvData = {
+    personal: {
+        email: "r.frecer@gmail.com",
+        linkedin: "https://www.linkedin.com/in/robert-frecer-924561169",
+        academia: "https://cuni.academia.edu/RobertFrecer",
+        goodreads: "https://www.goodreads.com/author/show/8585122.Robert_Frecer"
+    },
+
+    skills: [
+        { name: "Strategic planning", color: "green" },
+        { name: "Cost-benefit analysis", color: "green" },
+        { name: "Process engineering", color: "green" },
+        { name: "Project management", color: "blue" },
+        { name: "Process implementation", color: "blue" },
+        { name: "Roman archaeology", color: "brown" },
+        { name: "Ancient economy", color: "brown" },
+        { name: "React.js", color: "gray" },
+        { name: "Frontend design", color: "gray" },
+        { name: "SQL", color: "gray" },
+        { name: "Notion", color: "gray" },
+        { name: "UI design", color: "gray" },
+        { name: "Google Workspace", color: "gray" },
+        { name: "Figma", color: "gray" },
+        { name: "Performance evaluation", color: "yellow" },
+        { name: "University teaching", color: "yellow" },
+        { name: "Site operations", color: "default" },
+        { name: "Hiring", color: "default" },
+        { name: "Legal compliance", color: "default" },
+        { name: "Customer experience", color: "orange" },
+        { name: "Copywriting", color: "orange" }
+    ],
+
     experience: [
         {
             title: "Business Consultant",
             company: "Gisat",
-            date: "Mar 2023 – present",
+            url: "https://gisat.cz",
+            date: "Mar 2023 – present&nbsp;", 
             bullets: [
                 "Designed and implemented new tools and workflows for a 35-member R&D team using Google Workspace and Notion",
                 "Developed and delivered training in project management to employees in management roles",
@@ -26,22 +58,24 @@ const cvData = {
         {
             title: "Site Director",
             company: "Represent.com",
+            url: "https://represent.com",
             date: "Apr 2022 – Feb 2023",
             bullets: [
                 "Directed all site operations for the Prague office, overseeing a team of approximately 20 employees",
                 "Managed the Czech corporate entity with full legal, payroll and regulatory responsibilities"
             ],
             tags: [
-                { name: "Site operations", color: "blue" },
-                { name: "Performance evaluation", color: "blue" },
+                { name: "Site operations", color: "default" },
+                { name: "Performance evaluation", color: "yellow" },
                 { name: "Process implementation", color: "blue" },
-                { name: "Legal compliance", color: "red" },
+                { name: "Legal compliance", color: "default" },
                 { name: "Google Workspace", color: "gray" }
             ]
         },
         {
             title: "Director of Operations & Customer Experience",
             company: "Represent.com",
+            url: "https://represent.com",
             date: "Jul 2018 – Jan 2023",
             bullets: [
                 "Managed team leaders in Operations and Customer Experience departments, fostering a culture of positive and honest leadership",
@@ -49,7 +83,7 @@ const cvData = {
                 "Acted in various roles as VOC, stakeholder and product owner for API integrations with internal and external engineering teams"
             ],
             tags: [
-                { name: "Performance evaluation", color: "blue" },
+                { name: "Performance evaluation", color: "yellow" },
                 { name: "Project management", color: "blue" },
                 { name: "Strategic planning", color: "green" },
                 { name: "Google Workspace", color: "gray" }
@@ -58,6 +92,7 @@ const cvData = {
         {
             title: "Head of Customer Experience & Operations",
             company: "Represent.com",
+            url: "https://represent.com",
             date: "Apr 2016 – Jul 2018",
             bullets: [
                 "Built and scaled high-performing Customer Experience teams in Prague and Los Angeles",
@@ -66,7 +101,7 @@ const cvData = {
                 "Managed API integrations with key partners, including printers and external vendors."
             ],
             tags: [
-                { name: "Hiring", color: "blue" },
+                { name: "Hiring", color: "default" },
                 { name: "Cost-benefit analysis", color: "green" },
                 { name: "Project management", color: "blue" },
                 { name: "Google Workspace", color: "gray" }
@@ -75,26 +110,28 @@ const cvData = {
         {
             title: "Customer Experience Manager",
             company: "Represent.com",
+            url: "https://represent.com",
             date: "Mar 2015 – Mar 2016",
             bullets: [
                 "Handled customer-facing strategy and communication for leading influencer merch brand based in Los Angeles",
                 "Drove UI redesign of internal dashboards and tools to raise operational efficiency by 80%"
             ],
             tags: [
-                { name: "Customer experience", color: "brown" },
+                { name: "Customer experience", color: "orange" },
                 { name: "UI design", color: "gray" },
-                { name: "Copywriting", color: "brown" }
+                { name: "Copywriting", color: "orange" }
             ]
         },
         {
             title: "Assistant Lecturer in Roman Archaeology",
             company: "Charles University",
+            url: "https://cuni.cz",
             date: "Feb 2014 – Jun 2015",
             bullets: [
                 "Taught undergraduate courses Studies in the Ancient Economy and Roman Archaeology at the Institute of Classical Archaeology (Faculty of Arts)"
             ],
             tags: [
-                { name: "University teaching", color: "brown" },
+                { name: "University teaching", color: "yellow" },
                 { name: "Roman archaeology", color: "brown" },
                 { name: "Ancient economy", color: "brown" }
             ]
@@ -102,6 +139,7 @@ const cvData = {
         {
             title: "Translator",
             company: "Freelance",
+            url: "",
             date: "Jun 2007 – Mar 2015",
             bullets: [
                 "Translated legal and medical texts for various clients including O2, the Ministry of Health (Slovakia), and Union"
@@ -114,22 +152,22 @@ const cvData = {
         {
             degree: "Doctor of Philosophy (PhD.), Classical Archaeology",
             university: "Charles University",
+            url: "https://cuni.cz",
             date: "Sep 2007 – Jun 2015",
-            location: "Prague",
             details: "Doctoral thesis: Gerulata: The Lamps. Roman Lamps in a Provincial Context. Conducted research in the economy of Roman lamps and proposed an original model of production by subsidiary workshops that explained finds of lamp “copies” which had long been misattributed."
         },
         {
             degree: "Master of Arts (Mgr.), Classical Archaeology",
             university: "Charles University",
+            url: "https://cuni.cz",
             date: "Sep 2010 – Sep 2012",
-            location: "Prague",
             details: "Master’s thesis: Roman Lamps from the Cemeteries of Gerulata (Rusovce)."
         },
         {
             degree: "Bachelor of Arts (Bc.), Classical Archaeology",
             university: "Charles University",
+            url: "https://cuni.cz",
             date: "Sep 2007 – Sep 2010",
-            location: "Prague",
             details: "Bachelor’s thesis: Roman Civilian Buildings North of the Limes Romanus in the Danube Lowland."
         }
     ],
@@ -138,18 +176,18 @@ const cvData = {
         {
             title: "Terez Frecerová Portfolio",
             url: "https://terezfrecerova.sk/",
-            description: "Artist portfolio website for singer, songwriter and author Terez Frecerová, ©️2026",
-            bullets: [],
+            date: "2026",
+            description: "Artist portfolio website for singer, songwriter and author Terez Frecerová.",
             tags: [
                 { name: "React.js", color: "gray" },
                 { name: "Frontend design", color: "gray" }
             ]
         },
         {
-            title: "Sustainable Landscape for Integrated Management (SLIM)",
+            title: "Sustainable Landscape for Integrated Management",
             url: "https://gisat.github.io/app-slim-maps/",
+            date: "2023 – 2024",
             description: "A series of geospatial products showing the dynamics of landscape change and risk of natural disasters such as floods, wildfires and drought, in Zambia. Services were developed in close cooperation with Zambian government and public institutions through in-person user research, validation, and training. The project was funded by CzechAid.",
-            bullets: [],
             tags: [
                 { name: "React.js", color: "gray" },
                 { name: "Frontend design", color: "gray" }
@@ -158,22 +196,17 @@ const cvData = {
         {
             title: "Špaňodolinské granty",
             url: "https://rfrecer.github.io/spanodolinske-granty/",
-            description: "A map of traditional waterwells in the historical mining village of Špania Dolina, Slovakia. This medieval network of mountain streams was engineered to supply the village with drinking water but has recently mostly dried out or become polluted. The project aims to initiate restoration efforts of this unique water source, its importance highlighted by recent years of drought caused by climate change. ©️2025",
-            bullets: [],
+            date: "2025",
+            description: "A map of traditional waterwells in the historical mining village of Špania Dolina, Slovakia. This medieval network of mountain streams was engineered to supply the village with drinking water but has recently mostly dried out or become polluted. The project aims to initiate restoration efforts of this unique water source, its importance highlighted by recent years of drought caused by climate change.",
             tags: [
                 { name: "Frontend design", color: "gray" }
             ]
         },
         {
-            title: "🪔 Archaeology",
+            title: "Archaeological Fieldwork & Research",
             url: "",
-            description: "",
-            bullets: [
-                "Uncovered Roman-style buildings and Celtic coin hoard at Bratislava Castle 🇸🇰 (2009)",
-                "Studied and published Roman lamps of Gerulata 🇸🇰 (2011–2015)",
-                "Surveyed city walls of Eryx, Sicily 🇮🇹 (2013)",
-                "Excavated Roman settlement near Stroyno, Bulgaria 🇧🇬 (2015)"
-            ],
+            date: "2009 – 2015",
+            description: "Directed international archaeological excavations and surveys across Slovakia, Sicily, and Bulgaria. Key achievements include the discovery of Roman-style buildings and a Celtic coin hoard at Bratislava Castle, the comprehensive study and publication of Roman lamps from Gerulata, and the mapping of ancient city walls in Eryx, Sicily. This fieldwork required rigorous project management, cross-border academic collaboration, and extensive data analysis.",
             tags: [
                 { name: "Roman archaeology", color: "brown" },
                 { name: "Ancient economy", color: "brown" }
@@ -182,10 +215,10 @@ const cvData = {
     ],
 
     affiliations: [
-        "🇺🇸 Benjamin Franklin Transatlantic Fellows Initiative (’06 Alumnus)",
-        "🇪🇺 European Association of Archaeologists",
-        "🇪🇺 Limes Congress",
-        "🇨🇿 Klub Alumni Univerzity Karlovy"
+        { emoji: "🇺🇸", text: "Benjamin Franklin Transatlantic Fellows Initiative (’06 Alumnus)" },
+        { emoji: "🇪🇺", text: "European Association of Archaeologists" },
+        { emoji: "🇪🇺", text: "Limes Congress" },
+        { emoji: "🇨🇿", text: "Klub Alumni Univerzity Karlovy" }
     ],
 
     languages: [

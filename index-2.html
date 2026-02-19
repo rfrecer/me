@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Robert Frecer, PhD</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-main: #ffffff;
@@ -14,15 +14,18 @@
             --font-sans: 'Inter', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
             
-            /* Skill Tag Colors */
-            --tag-green-bg: #e6f4ea; --tag-green-txt: #1e4620;
-            --tag-blue-bg: #e8f0fe; --tag-blue-txt: #113264;
-            --tag-gray-bg: #f1f3f4; --tag-gray-txt: #3c4043;
-            --tag-brown-bg: #f4ece1; --tag-brown-txt: #5c3a21;
-            --tag-red-bg: #fce8e6; --tag-red-txt: #702b24;
+            /* Precise Notion Light Mode Tag Colors */
+            --tag-green-bg: #e1efe6; --tag-green-txt: #356b46;
+            --tag-blue-bg: #e3ebfb; --tag-blue-txt: #3b5a9b;
+            --tag-gray-bg: #f1f1ef; --tag-gray-txt: #787774;
+            --tag-brown-bg: #f4eeee; --tag-brown-txt: #7f5233;
+            --tag-yellow-bg: #fdf5e0; --tag-yellow-txt: #b27b14;
+            --tag-orange-bg: #faece5; --tag-orange-txt: #a14c24;
+            --tag-default-bg: #f1f1f1; --tag-default-txt: #37352f;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: var(--font-sans);
@@ -43,40 +46,42 @@
         }
 
         /* Sidebar Styles */
-        .sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
+        .sidebar { display: flex; flex-direction: column; gap: 2rem; }
 
-        .profile-header h1 { font-size: 2rem; font-weight: 600; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+        .profile-header h1 { font-family: var(--font-sans); font-size: 2rem; font-weight: 600; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
         .bio { font-size: 0.95rem; color: var(--text-muted); }
         
-        /* The specific sticky nav container */
+        .contact-links { display: flex; flex-direction: column; gap: 0.25rem; font-family: var(--font-mono); font-size: 0.85rem; margin-top: -1.5rem; margin-bottom: 0.5rem; }
+        .contact-links a { text-decoration: none; color: var(--text-main); border-bottom: 1px dashed var(--text-muted); width: fit-content; }
+        .contact-links a:hover { border-bottom-style: solid; }
+        
+        /* Sticky Nav */
         .nav-links { 
             position: sticky; 
-            top: 4rem; /* Pins to top of screen as you scroll past bio */
+            top: 4rem; 
             display: flex; 
             flex-direction: column; 
             gap: 0.5rem; 
             font-family: var(--font-mono); 
             font-size: 0.85rem; 
+            margin-top: 1rem;
         }
         .nav-links a { text-decoration: none; color: var(--text-muted); padding: 0.25rem 0; transition: color 0.2s; }
         .nav-links a:hover, .nav-links a.active { color: var(--text-main); font-weight: 600; }
-
-        .contact-links { display: flex; gap: 1rem; font-family: var(--font-mono); font-size: 0.85rem; margin-top: 1rem; }
-        .contact-links a { text-decoration: none; color: var(--text-main); border-bottom: 1px solid transparent; }
-        .contact-links a:hover { border-bottom-color: var(--text-main); }
+        
+        .back-to-top { margin-bottom: 1rem; font-weight: 500; }
 
         /* Main Content Styles */
         .content { display: flex; flex-direction: column; gap: 5rem; }
 
         section h2 {
-            font-family: var(--font-mono); font-size: 1rem; font-weight: 500; text-transform: uppercase;
+            font-family: var(--font-mono); font-size: 0.9rem; font-weight: 500; text-transform: uppercase;
             letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 2rem;
             border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;
         }
+        
+        /* Side-by-Side Headings */
+        section h3 { font-family: var(--font-sans); font-size: 0.95rem; margin-bottom: 1rem; color: var(--text-main); font-weight: 600; }
 
         /* Generic Content Formatting */
         .details-content { font-size: 0.95rem; color: var(--text-muted); padding-top: 1rem; }
@@ -84,62 +89,72 @@
         .details-content li { margin-bottom: 0.5rem; }
 
         /* Toggles / Dropdowns (Experience, Edu, Projects) */
-        details { margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; }
-        summary { font-weight: 500; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; font-size: 1.1rem; }
+        details { margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem; }
+        summary { 
+            cursor: pointer; list-style: none; display: flex; 
+            justify-content: space-between; align-items: flex-start; gap: 1rem; 
+        }
         summary::-webkit-details-marker { display: none; }
-        summary:hover { color: var(--text-muted); }
-
-        .role-title { font-weight: 600; }
-        .role-company { color: var(--text-muted); font-weight: 400; }
         
-        /* The nowrap prevents the date from breaking. The text-align and ch width ensure perfect dash alignment */
+        /* Stacks the Title and the Link vertically */
+        .summary-left { display: flex; flex-direction: column; gap: 0.25rem; flex: 1; }
+        
+        /* Reverted Typography */
+        .role-title { font-family: var(--font-sans); font-size: 1.1rem; font-weight: 600; color: var(--text-main); }
+        
+        .entity-link { font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted); text-decoration: none; border-bottom: 1px dashed var(--text-muted); transition: color 0.2s; width: fit-content; }
+        .entity-link:hover { color: var(--text-main); border-bottom-style: solid; }
+        .entity-no-link { border-bottom: none; cursor: default; }
+        .entity-no-link:hover { color: var(--text-muted); }
+
         .role-date { 
-            font-family: var(--font-mono); 
-            font-size: 0.85rem; 
-            color: var(--text-muted); 
-            white-space: nowrap; 
-            min-width: 20ch; 
-            text-align: right; 
-            padding-top: 0.2rem;
+            font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted); 
+            white-space: nowrap; margin-left: auto; text-align: right; 
         }
 
-        /* Links in Projects */
-        .project-link { display: inline-block; font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-main); margin-bottom: 1rem; text-decoration: none; border-bottom: 1px dashed var(--text-muted); }
-        .project-link:hover { border-bottom-style: solid; }
+        /* 2-Column Split for Affiliations & Languages */
+        .split-section { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
 
         /* Standard text lists (Affiliations, Bibliography) */
         .standard-text-list { list-style-type: none; font-size: 0.95rem; color: var(--text-muted); }
         .standard-text-list li { margin-bottom: 1rem; display: flex; gap: 0.75rem; align-items: flex-start; }
 
         /* Skill Tags */
-        .tags-container { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
-        .tag { font-family: var(--font-mono); font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 4px; font-weight: 500; height: fit-content; }
+        .tags-container { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+        .tag { font-family: var(--font-mono); font-size: 0.75rem; padding: 0.25rem 0.6rem; border-radius: 4px; font-weight: 500; height: fit-content; }
         .tag.green { background-color: var(--tag-green-bg); color: var(--tag-green-txt); }
         .tag.blue { background-color: var(--tag-blue-bg); color: var(--tag-blue-txt); }
         .tag.gray { background-color: var(--tag-gray-bg); color: var(--tag-gray-txt); }
         .tag.brown { background-color: var(--tag-brown-bg); color: var(--tag-brown-txt); }
-        .tag.red { background-color: var(--tag-red-bg); color: var(--tag-red-txt); }
+        .tag.yellow { background-color: var(--tag-yellow-bg); color: var(--tag-yellow-txt); }
+        .tag.orange { background-color: var(--tag-orange-bg); color: var(--tag-orange-txt); }
+        .tag.default { background-color: var(--tag-default-bg); color: var(--tag-default-txt); border: 1px solid #e0e0e0; padding: 0.2rem 0.5rem; }
 
-        /* Language Grid */
-        .language-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.95rem; }
+        /* Languages List */
+        .language-list { font-size: 0.95rem; display: flex; flex-direction: column; gap: 0.75rem; color: var(--text-muted); }
+        .language-item { display: flex; align-items: center; gap: 0.75rem; }
+        .language-item strong { color: var(--text-main); font-weight: 500; }
 
         @media (max-width: 800px) {
             .container { grid-template-columns: 1fr; padding: 2rem 1.5rem; gap: 3rem; }
             .sidebar { position: relative; top: 0; }
             .nav-links { display: none; }
-            summary { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
-            .role-date { text-align: left; padding-top: 0; min-width: auto; }
-            .language-grid { grid-template-columns: 1fr; }
+            summary { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+            .role-date { margin-left: 0; text-align: left; }
+            .split-section { grid-template-columns: 1fr; gap: 3rem; }
         }
     </style>
 </head>
-<body>
+<body id="top">
 
 <div class="container">
     <aside class="sidebar">
         <div class="profile-header">
             <h1>Robert Frecer, PhD</h1>
         </div>
+
+        <div class="contact-links" id="contact-container">
+            </div>
         
         <div class="bio">
             <p>My background is in Classical Archaeology, and I’ve worked in the technology and merchandising sectors in management roles for over 10 years. Granted, these are diverse fields, but one thing I think all projects share is a need for resource efficiency.</p>
@@ -150,17 +165,13 @@
         </div>
 
         <nav class="nav-links">
+            <a href="#top" class="back-to-top">↑ Top</a>
             <a href="#experience" class="nav-link active">// Experience</a>
             <a href="#education" class="nav-link">// Education</a>
             <a href="#projects" class="nav-link">// Projects</a>
+            <a href="#skills" class="nav-link">// Skills</a>
             <a href="#affiliations" class="nav-link">// Affiliations & Languages</a>
             <a href="#bibliography" class="nav-link">// Bibliography</a>
-            
-            <div class="contact-links">
-                <a href="https://www.linkedin.com/in/robert-frecer-924561169" target="_blank">LinkedIn</a>
-                <a href="https://cuni.academia.edu/RobertFrecer" target="_blank">Academia</a>
-                <a href="https://www.goodreads.com/author/show/8585122.Robert_Frecer" target="_blank">Goodreads</a>
-            </div>
         </nav>
     </aside>
 
@@ -181,14 +192,22 @@
             <div id="projects-container"></div>
         </section>
 
+        <section id="skills">
+            <h2>// Skills</h2>
+            <div id="skills-container" class="tags-container"></div>
+        </section>
+
         <section id="affiliations">
             <h2>// Affiliations & Languages</h2>
-            <div style="margin-bottom: 2rem;">
-                <ul id="affiliations-container" class="standard-text-list" style="margin-bottom: 2rem;"></ul>
-            </div>
-            <div>
-                <h3 style="font-size: 0.95rem; margin-bottom: 1rem; color: var(--text-main);">Languages</h3>
-                <div id="languages-container" class="language-grid"></div>
+            <div class="split-section">
+                <div class="split-col">
+                    <h3>Affiliations</h3>
+                    <ul id="affiliations-container" class="standard-text-list"></ul>
+                </div>
+                <div class="split-col">
+                    <h3>Languages</h3>
+                    <div id="languages-container" class="language-list"></div>
+                </div>
             </div>
         </section>
 
@@ -204,10 +223,19 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        
-        if (typeof cvData === 'undefined') {
-            console.error("data.js could not be loaded or cvData is missing.");
-            return;
+        if (typeof cvData === 'undefined') { console.error("data.js is missing."); return; }
+
+        // --- RENDER CONTACT INFO ---
+        const contactContainer = document.getElementById("contact-container");
+        if (cvData.personal) {
+            contactContainer.innerHTML = `
+                <a href="mailto:${cvData.personal.email}">${cvData.personal.email}</a>
+                <div style="display: flex; gap: 1rem; margin-top: 0.25rem;">
+                    <a href="${cvData.personal.linkedin}" target="_blank">LinkedIn</a>
+                    <a href="${cvData.personal.academia}" target="_blank">Academia</a>
+                    <a href="${cvData.personal.goodreads}" target="_blank">Goodreads</a>
+                </div>
+            `;
         }
 
         // --- RENDER EXPERIENCE ---
@@ -215,12 +243,19 @@
         if (cvData.experience) {
             cvData.experience.forEach(job => {
                 const bulletsHTML = job.bullets && job.bullets.length > 0 ? `<ul>${job.bullets.map(b => `<li>${b}</li>`).join('')}</ul>` : '';
-                const tagsHTML = job.tags && job.tags.length > 0 ? `<div class="tags-container">${job.tags.map(t => `<span class="tag ${t.color}">${t.name}</span>`).join('')}</div>` : '';
+                const tagsHTML = job.tags && job.tags.length > 0 ? `<div class="tags-container" style="margin-top: 1.5rem;">${job.tags.map(t => `<span class="tag ${t.color}">${t.name}</span>`).join('')}</div>` : '';
                 
+                const entityHTML = job.url 
+                    ? `<a href="${job.url}" target="_blank" class="entity-link click-prevent">${job.company}</a>` 
+                    : `<span class="entity-link entity-no-link">${job.company}</span>`;
+
                 expContainer.innerHTML += `
                     <details>
                         <summary>
-                            <span><span class="role-title">${job.title}</span> <span class="role-company">| ${job.company}</span></span>
+                            <div class="summary-left">
+                                <span class="role-title">${job.title}</span> 
+                                ${entityHTML}
+                            </div>
                             <span class="role-date">${job.date}</span>
                         </summary>
                         <div class="details-content">
@@ -236,10 +271,17 @@
         const eduContainer = document.getElementById("education-container");
         if (cvData.education) {
             cvData.education.forEach(edu => {
+                const entityHTML = edu.url 
+                    ? `<a href="${edu.url}" target="_blank" class="entity-link click-prevent">${edu.university}</a>` 
+                    : `<span class="entity-link entity-no-link">${edu.university}</span>`;
+
                 eduContainer.innerHTML += `
                     <details>
                         <summary>
-                            <span><span class="role-title">${edu.degree}</span> <span class="role-company">| ${edu.university}</span></span>
+                            <div class="summary-left">
+                                <span class="role-title">${edu.degree}</span> 
+                                ${entityHTML}
+                            </div>
                             <span class="role-date">${edu.date}</span>
                         </summary>
                         <div class="details-content">
@@ -255,16 +297,21 @@
         if (cvData.projects) {
             cvData.projects.forEach(proj => {
                 const tagsHTML = proj.tags && proj.tags.length > 0 ? `<div class="tags-container" style="margin-top: 1.5rem;">${proj.tags.map(t => `<span class="tag ${t.color}">${t.name}</span>`).join('')}</div>` : '';
-                const linkHTML = proj.url ? `<a href="${proj.url}" target="_blank" class="project-link">${proj.url.replace('https://', '')}</a><br>` : '';
+                
+                const entityHTML = proj.url 
+                    ? `<a href="${proj.url}" target="_blank" class="entity-link click-prevent">${proj.url.replace(/^https?:\/\//, '')}</a>` 
+                    : '';
 
                 projContainer.innerHTML += `
                     <details>
                         <summary>
-                            <span class="role-title">${proj.title}</span>
+                            <div class="summary-left">
+                                <span class="role-title">${proj.title}</span>
+                                ${entityHTML}
+                            </div>
                             <span class="role-date">${proj.date}</span>
                         </summary>
                         <div class="details-content">
-                            ${linkHTML}
                             ${proj.description ? `<p>${proj.description}</p>` : ''}
                             ${tagsHTML}
                         </div>
@@ -273,14 +320,26 @@
             });
         }
 
+        // --- PREVENT LINKS IN HEADERS FROM TOGGLING DETAILS ---
+        document.querySelectorAll('.click-prevent').forEach(link => {
+            link.addEventListener('click', (e) => e.stopPropagation());
+        });
+
+        // --- RENDER SKILLS MAIN SECTION ---
+        const skillsContainer = document.getElementById("skills-container");
+        if (cvData.skills) {
+            cvData.skills.forEach(skill => {
+                skillsContainer.innerHTML += `<span class="tag ${skill.color}">${skill.name}</span>`;
+            });
+        }
+
         // --- RENDER AFFILIATIONS & LANGUAGES ---
         const affContainer = document.getElementById("affiliations-container");
         if (cvData.affiliations) {
             cvData.affiliations.forEach(aff => {
-                // Notice the super clean monospace tag rendering instead of emojis
                 affContainer.innerHTML += `
                     <li>
-                        <span class="tag gray" style="margin-top: 0.15rem;">${aff.region}</span>
+                        <span>${aff.emoji}</span>
                         <span>${aff.text}</span>
                     </li>
                 `;
@@ -290,8 +349,16 @@
         const langContainer = document.getElementById("languages-container");
         if (cvData.languages) {
             cvData.languages.forEach(lang => {
+                let colorClass = "gray"; 
+                if (lang.proficiency === "Native" || lang.proficiency === "Fluent") colorClass = "green";
+                else if (lang.proficiency === "Proficient") colorClass = "blue";
+
                 langContainer.innerHTML += `
-                    <div><strong>${lang.language}</strong> <span style="color: var(--text-muted);">&mdash;</span> <span class="tag gray">${lang.proficiency}</span></div>
+                    <div class="language-item">
+                        <strong>${lang.language}</strong>
+                        <span style="color: var(--text-muted);">&mdash;</span>
+                        <span class="tag ${colorClass}">${lang.proficiency}</span>
+                    </div>
                 `;
             });
         }
@@ -308,7 +375,6 @@
         // --- SCROLLSPY NAVIGATION ---
         const sections = document.querySelectorAll("main section");
         const navLinks = document.querySelectorAll(".nav-links a.nav-link");
-
         const observerOptions = { root: null, rootMargin: "0px", threshold: 0.2 };
 
         const observer = new IntersectionObserver((entries) => {
