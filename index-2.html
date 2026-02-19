@@ -51,20 +51,25 @@
         .profile-header h1 { font-family: var(--font-sans); font-size: 2rem; font-weight: 600; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
         .bio { font-size: 0.95rem; color: var(--text-muted); }
         
-        .contact-links { display: flex; flex-direction: column; gap: 0.25rem; font-family: var(--font-mono); font-size: 0.85rem; margin-top: -1.5rem; margin-bottom: 0.5rem; }
+        /* Sticky Panel combining Contact & Navigation */
+        .sticky-panel {
+            position: sticky;
+            top: 4rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem; /* Space between contact and nav */
+        }
+
+        .contact-links { display: flex; flex-direction: column; gap: 0.25rem; font-family: var(--font-mono); font-size: 0.85rem; }
         .contact-links a { text-decoration: none; color: var(--text-main); border-bottom: 1px dashed var(--text-muted); width: fit-content; }
         .contact-links a:hover { border-bottom-style: solid; }
         
-        /* Sticky Nav */
         .nav-links { 
-            position: sticky; 
-            top: 4rem; 
             display: flex; 
             flex-direction: column; 
             gap: 0.5rem; 
             font-family: var(--font-mono); 
             font-size: 0.85rem; 
-            margin-top: 1rem;
         }
         .nav-links a { text-decoration: none; color: var(--text-muted); padding: 0.25rem 0; transition: color 0.2s; }
         .nav-links a:hover, .nav-links a.active { color: var(--text-main); font-weight: 600; }
@@ -75,7 +80,7 @@
         .content { display: flex; flex-direction: column; gap: 5rem; }
 
         section h2 {
-            font-family: var(--font-mono); font-size: 0.9rem; font-weight: 500; text-transform: uppercase;
+            font-family: var(--font-mono); font-size: 1rem; font-weight: 500; text-transform: uppercase;
             letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 2rem;
             border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;
         }
@@ -99,13 +104,12 @@
         /* Stacks the Title and the Link vertically */
         .summary-left { display: flex; flex-direction: column; gap: 0.25rem; flex: 1; }
         
-        /* Reverted Typography */
         .role-title { font-family: var(--font-sans); font-size: 1.1rem; font-weight: 600; color: var(--text-main); }
         
-        .entity-link { font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted); text-decoration: none; border-bottom: 1px dashed var(--text-muted); transition: color 0.2s; width: fit-content; }
-        .entity-link:hover { color: var(--text-main); border-bottom-style: solid; }
+        .entity-link { font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-main); text-decoration: none; border-bottom: 1px dashed var(--text-muted); transition: color 0.2s; width: fit-content; }
+        .entity-link:hover { border-bottom-style: solid; }
         .entity-no-link { border-bottom: none; cursor: default; }
-        .entity-no-link:hover { color: var(--text-muted); }
+        .entity-no-link:hover { color: var(--text-main); border-bottom: none; }
 
         .role-date { 
             font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted); 
@@ -138,6 +142,7 @@
         @media (max-width: 800px) {
             .container { grid-template-columns: 1fr; padding: 2rem 1.5rem; gap: 3rem; }
             .sidebar { position: relative; top: 0; }
+            .sticky-panel { position: static; gap: 1.5rem; }
             .nav-links { display: none; }
             summary { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
             .role-date { margin-left: 0; text-align: left; }
@@ -152,9 +157,6 @@
         <div class="profile-header">
             <h1>Robert Frecer, PhD</h1>
         </div>
-
-        <div class="contact-links" id="contact-container">
-            </div>
         
         <div class="bio">
             <p>My background is in Classical Archaeology, and I’ve worked in the technology and merchandising sectors in management roles for over 10 years. Granted, these are diverse fields, but one thing I think all projects share is a need for resource efficiency.</p>
@@ -164,15 +166,20 @@
             <p>I believe the best solutions to every problem are out there, you just have to be willing to find them.</p>
         </div>
 
-        <nav class="nav-links">
-            <a href="#top" class="back-to-top">↑ Top</a>
-            <a href="#experience" class="nav-link active">// Experience</a>
-            <a href="#education" class="nav-link">// Education</a>
-            <a href="#projects" class="nav-link">// Projects</a>
-            <a href="#skills" class="nav-link">// Skills</a>
-            <a href="#affiliations" class="nav-link">// Affiliations & Languages</a>
-            <a href="#bibliography" class="nav-link">// Bibliography</a>
-        </nav>
+        <div class="sticky-panel">
+            <div class="contact-links" id="contact-container">
+                </div>
+
+            <nav class="nav-links">
+                <a href="#top" class="back-to-top">↑ Top</a>
+                <a href="#experience" class="nav-link active">// Experience</a>
+                <a href="#education" class="nav-link">// Education</a>
+                <a href="#projects" class="nav-link">// Projects</a>
+                <a href="#skills" class="nav-link">// Skills</a>
+                <a href="#affiliations" class="nav-link">// Affiliations & Languages</a>
+                <a href="#bibliography" class="nav-link">// Bibliography</a>
+            </nav>
+        </div>
     </aside>
 
     <main class="content">
