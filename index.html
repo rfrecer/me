@@ -14,7 +14,7 @@
             --font-sans: 'Inter', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
             
-            /* Skill Tag Colors (Mimicking Notion's pale backgrounds) */
+            /* Skill Tag Colors */
             --tag-green-bg: #e6f4ea; --tag-green-txt: #1e4620;
             --tag-blue-bg: #e8f0fe; --tag-blue-txt: #113264;
             --tag-gray-bg: #f1f3f4; --tag-gray-txt: #3c4043;
@@ -42,7 +42,7 @@
             padding: 4rem 2rem;
         }
 
-        /* --- SIDEBAR STYLES --- */
+        /* Sidebar Styles */
         .sidebar {
             position: sticky;
             top: 4rem;
@@ -53,168 +53,73 @@
             gap: 2rem;
         }
 
-        .profile-header h1 {
-            font-size: 2rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.02em;
-        }
-
-        .profile-header .location {
-            font-family: var(--font-mono);
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-        }
-
-        .bio {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-        }
-
-        .nav-links {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            font-family: var(--font-mono);
-            font-size: 0.85rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-muted);
-            padding: 0.25rem 0;
-            transition: color 0.2s;
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--text-main);
-            font-weight: 600;
-        }
-
-        .contact-links {
-            display: flex;
-            gap: 1rem;
-            font-family: var(--font-mono);
-            font-size: 0.85rem;
-        }
-
-        .contact-links a {
-            text-decoration: none;
-            color: var(--text-main);
-            border-bottom: 1px solid transparent;
-        }
+        .profile-header h1 { font-size: 2rem; font-weight: 600; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+        .profile-header .location { font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+        .bio { font-size: 0.95rem; color: var(--text-muted); }
         
+        .nav-links { display: flex; flex-direction: column; gap: 0.5rem; font-family: var(--font-mono); font-size: 0.85rem; }
+        .nav-links a { text-decoration: none; color: var(--text-muted); padding: 0.25rem 0; transition: color 0.2s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--text-main); font-weight: 600; }
+
+        .contact-links { display: flex; gap: 1rem; font-family: var(--font-mono); font-size: 0.85rem; }
+        .contact-links a { text-decoration: none; color: var(--text-main); border-bottom: 1px solid transparent; }
         .contact-links a:hover { border-bottom-color: var(--text-main); }
 
-        /* --- MAIN CONTENT STYLES --- */
-        .content {
-            display: flex;
-            flex-direction: column;
-            gap: 5rem;
-        }
+        /* Main Content Styles */
+        .content { display: flex; flex-direction: column; gap: 5rem; }
 
         section h2 {
-            font-family: var(--font-mono);
-            font-size: 1rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 0.5rem;
+            font-family: var(--font-mono); font-size: 1rem; font-weight: 500; text-transform: uppercase;
+            letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;
         }
 
-        /* Toggles / Dropdowns for Experience */
-        details {
-            margin-bottom: 1rem;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 1rem;
-        }
+        /* Generic Content Formatting */
+        .details-content { font-size: 0.95rem; color: var(--text-muted); }
+        .details-content ul { padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem; }
+        .details-content li { margin-bottom: 0.5rem; }
 
-        summary {
-            font-weight: 500;
-            cursor: pointer;
-            list-style: none; /* Hide default arrow */
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 1.1rem;
-        }
-
-        summary::-webkit-details-marker { display: none; } /* Hide default arrow webkit */
-
+        /* Toggles / Dropdowns (Experience) */
+        details { margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; }
+        summary { font-weight: 500; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; font-size: 1.1rem; }
+        summary::-webkit-details-marker { display: none; }
         summary:hover { color: var(--text-muted); }
 
         .role-title { font-weight: 600; }
         .role-company { color: var(--text-muted); font-weight: 400; }
         .role-date { font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted); }
 
-        .details-content {
-            padding-top: 1rem;
-            font-size: 0.95rem;
-            color: var(--text-muted);
-        }
+        /* Education & Projects Layout */
+        .list-item { margin-bottom: 2rem; }
+        .list-item-header { font-weight: 600; font-size: 1.05rem; margin-bottom: 0.2rem; }
+        .list-item-meta { font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+        
+        /* Links in Projects */
+        .project-link { display: inline-block; font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-main); margin-bottom: 0.5rem; text-decoration: none; border-bottom: 1px dashed var(--text-muted); }
+        .project-link:hover { border-bottom-style: solid; }
 
-        .details-content ul {
-            padding-left: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .details-content li { margin-bottom: 0.5rem; }
+        /* Standard text lists (Affiliations, Bibliography) */
+        .standard-text-list { list-style-type: none; font-size: 0.95rem; color: var(--text-muted); }
+        .standard-text-list li { margin-bottom: 1rem; }
 
         /* Skill Tags */
-        .tags-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .tag {
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-weight: 500;
-        }
-
+        .tags-container { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+        .tag { font-family: var(--font-mono); font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 4px; font-weight: 500; }
         .tag.green { background-color: var(--tag-green-bg); color: var(--tag-green-txt); }
         .tag.blue { background-color: var(--tag-blue-bg); color: var(--tag-blue-txt); }
         .tag.gray { background-color: var(--tag-gray-bg); color: var(--tag-gray-txt); }
         .tag.brown { background-color: var(--tag-brown-bg); color: var(--tag-brown-txt); }
         .tag.red { background-color: var(--tag-red-bg); color: var(--tag-red-txt); }
 
-        /* Generic lists for Education/Bibliography */
-        .standard-list li {
-            margin-bottom: 1.5rem;
-            list-style: none;
-        }
-        
-        .standard-list strong { color: var(--text-main); }
-        .standard-list .date-location {
-            font-family: var(--font-mono);
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            display: block;
-            margin: 0.2rem 0 0.5rem 0;
-        }
+        /* Language Grid */
+        .language-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.95rem; }
 
-        /* Mobile Stacking */
         @media (max-width: 800px) {
-            .container {
-                grid-template-columns: 1fr;
-                padding: 2rem 1.5rem;
-                gap: 3rem;
-            }
-            .sidebar {
-                position: relative;
-                top: 0;
-                max-height: none;
-            }
-            .nav-links { display: none; } /* Hide scrollspy on mobile to save space */
+            .container { grid-template-columns: 1fr; padding: 2rem 1.5rem; gap: 3rem; }
+            .sidebar { position: relative; top: 0; max-height: none; }
+            .nav-links { display: none; }
             summary { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
+            .language-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -239,7 +144,7 @@
             <a href="#experience" class="nav-link active">// Experience</a>
             <a href="#education" class="nav-link">// Education</a>
             <a href="#projects" class="nav-link">// Projects</a>
-            <a href="#skills" class="nav-link">// Skills & Languages</a>
+            <a href="#affiliations" class="nav-link">// Affiliations & Languages</a>
             <a href="#bibliography" class="nav-link">// Bibliography</a>
         </nav>
 
@@ -254,147 +159,141 @@
         
         <section id="experience">
             <h2>// Experience</h2>
-            
-            <details>
-                <summary>
-                    <span><span class="role-title">Business Consultant</span> <span class="role-company">| Gisat</span></span>
-                    <span class="role-date">Mar 2023 – present</span>
-                </summary>
-                <div class="details-content">
-                    <ul>
-                        <li>Designed and implemented new tools and workflows for a 35-member R&D team using Google Workspace and Notion</li>
-                        <li>Developed and delivered training in project management to employees in management roles</li>
-                        <li>Led projects delivering EO services to international clients</li>
-                        <li>Implemented a new performance evaluation framework to foster accountability and ownership</li>
-                        <li>Initiated and directed an overhaul of brand identity and communication strategy</li>
-                    </ul>
-                    <div class="tags-container">
-                        <span class="tag green">Process engineering</span>
-                        <span class="tag green">Strategic planning</span>
-                        <span class="tag blue">Project management</span>
-                        <span class="tag gray">Notion</span>
-                        <span class="tag blue">Process implementation</span>
-                        <span class="tag gray">React.js</span>
-                        <span class="tag blue">Performance evaluation</span>
-                        <span class="tag gray">Google Workspace</span>
-                        <span class="tag gray">Figma</span>
-                    </div>
-                </div>
-            </details>
-
-            <details>
-                <summary>
-                    <span><span class="role-title">Site Director</span> <span class="role-company">| Represent.com</span></span>
-                    <span class="role-date">Apr 2022 – Feb 2023</span>
-                </summary>
-                <div class="details-content">
-                    <ul>
-                        <li>Directed all site operations for the Prague office, overseeing a team of approximately 20 employees</li>
-                        <li>Managed the Czech corporate entity with full legal, payroll and regulatory responsibilities</li>
-                    </ul>
-                    <div class="tags-container">
-                        <span class="tag blue">Site operations</span>
-                        <span class="tag blue">Performance evaluation</span>
-                        <span class="tag blue">Process implementation</span>
-                        <span class="tag red">Legal compliance</span>
-                        <span class="tag gray">Google Workspace</span>
-                    </div>
-                </div>
-            </details>
-            
-            <details>
-                <summary>
-                    <span><span class="role-title">Director of Ops & Customer Exp</span> <span class="role-company">| Represent.com</span></span>
-                    <span class="role-date">Jul 2018 – Jan 2023</span>
-                </summary>
-                <div class="details-content">
-                    <ul>
-                        <li>Managed team leaders in Operations and Customer Experience departments, fostering a culture of positive and honest leadership</li>
-                        <li>Prepared cost-benefit analyses for major strategic initiatives to inform executive decision-making</li>
-                        <li>Acted in various roles as VOC, stakeholder and product owner for API integrations with internal and external engineering teams</li>
-                    </ul>
-                    <div class="tags-container">
-                        <span class="tag blue">Performance evaluation</span>
-                        <span class="tag blue">Project management</span>
-                        <span class="tag green">Strategic planning</span>
-                        <span class="tag gray">Google Workspace</span>
-                    </div>
-                </div>
-            </details>
-
+            <div id="experience-container"></div>
         </section>
 
         <section id="education">
             <h2>// Education</h2>
-            <ul class="standard-list">
-                <li>
-                    <strong>Doctor of Philosophy (PhD.), Classical Archaeology</strong> | Charles University
-                    <span class="date-location">Sep 2007 – Jun 2015  📍 Prague</span>
-                    <p class="details-content">Doctoral thesis: <em>Gerulata: The Lamps. Roman Lamps in a Provincial Context</em>. Conducted research in the economy of Roman lamps and proposed an original model of production by subsidiary workshops that explained finds of lamp “copies” which had long been misattributed.</p>
-                </li>
-                <li>
-                    <strong>Master of Arts (Mgr.), Classical Archaeology</strong> | Charles University
-                    <span class="date-location">Sep 2010 – Sep 2012  📍 Prague</span>
-                </li>
-            </ul>
+            <div id="education-container"></div>
         </section>
 
-        <section id="skills">
-            <h2>// Skills & Languages</h2>
-            <div class="details-content">
-                <p><strong>Management & Strategy</strong></p>
-                <div class="tags-container" style="margin-bottom: 1.5rem;">
-                    <span class="tag green">Strategic planning</span>
-                    <span class="tag green">Cost-benefit analysis</span>
-                    <span class="tag green">Process engineering</span>
-                    <span class="tag blue">Project management</span>
-                    <span class="tag blue">Process implementation</span>
-                    <span class="tag blue">Performance evaluation</span>
-                    <span class="tag blue">Site operations</span>
-                </div>
+        <section id="projects">
+            <h2>// Projects</h2>
+            <div id="projects-container"></div>
+        </section>
 
-                <p><strong>Technical & Tools</strong></p>
-                <div class="tags-container" style="margin-bottom: 1.5rem;">
-                    <span class="tag gray">React.js</span>
-                    <span class="tag gray">Frontend design</span>
-                    <span class="tag gray">SQL</span>
-                    <span class="tag gray">Notion</span>
-                    <span class="tag gray">UI design</span>
-                    <span class="tag gray">Google Workspace</span>
-                    <span class="tag gray">Figma</span>
-                </div>
-
-                <p><strong>Languages</strong></p>
-                <div class="tags-container">
-                    <span class="tag gray">Slovak (Native)</span>
-                    <span class="tag gray">English (Fluent)</span>
-                    <span class="tag gray">German (Proficient)</span>
-                    <span class="tag gray">Czech (Proficient)</span>
-                </div>
+        <section id="affiliations">
+            <h2>// Affiliations & Languages</h2>
+            <div style="margin-bottom: 2rem;">
+                <ul id="affiliations-container" class="standard-text-list" style="margin-bottom: 2rem;"></ul>
+            </div>
+            <div>
+                <h3 style="font-size: 0.95rem; margin-bottom: 1rem; color: var(--text-main);">Languages</h3>
+                <div id="languages-container" class="language-grid"></div>
             </div>
         </section>
 
         <section id="bibliography">
             <h2>// Bibliography</h2>
-            <ul class="standard-list" style="font-size: 0.9rem; color: var(--text-muted);">
-                <li><strong>Frecer, R. 2015.</strong> <em>Gerulata: The Lamps. Roman Lamps in a Provincial Context</em>. Prague: Karolinum, 420 p.</li>
-                <li><strong>Frecer, R. 2015.</strong> <em>New evidence on the organization of the Roman lamp industry. The lamps of Gerulata (Bratislava-Rusovce)</em>. Paper presented at the XXIII. Limes Congress in Ingolstadt, Germany.</li>
-                <li><strong>Frecer, R. 2015.</strong> (ed.) <em>Contacts, Migrations and Climate Change: Conference in honor of Jan Bouzek</em>. Prague: Institute of Classical Archaeology, 82 p.</li>
-            </ul>
+            <ul id="bibliography-container" class="standard-text-list"></ul>
         </section>
 
     </main>
 </div>
 
+<script src="data.js"></script>
+
 <script>
     document.addEventListener("DOMContentLoaded", function() {
+        
+        if (typeof cvData === 'undefined') {
+            console.error("data.js could not be loaded or cvData is missing.");
+            return;
+        }
+
+        // --- RENDER EXPERIENCE ---
+        const expContainer = document.getElementById("experience-container");
+        if (cvData.experience) {
+            cvData.experience.forEach(job => {
+                const bulletsHTML = job.bullets.map(bullet => `<li>${bullet}</li>`).join('');
+                const tagsHTML = job.tags.map(tag => `<span class="tag ${tag.color}">${tag.name}</span>`).join('');
+                
+                expContainer.innerHTML += `
+                    <details>
+                        <summary>
+                            <span><span class="role-title">${job.title}</span> <span class="role-company">| ${job.company}</span></span>
+                            <span class="role-date">${job.date}</span>
+                        </summary>
+                        <div class="details-content">
+                            ${bulletsHTML ? `<ul>${bulletsHTML}</ul>` : ''}
+                            ${tagsHTML ? `<div class="tags-container">${tagsHTML}</div>` : ''}
+                        </div>
+                    </details>
+                `;
+            });
+        }
+
+        // --- RENDER EDUCATION ---
+        const eduContainer = document.getElementById("education-container");
+        if (cvData.education) {
+            cvData.education.forEach(edu => {
+                eduContainer.innerHTML += `
+                    <div class="list-item">
+                        <div class="list-item-header">${edu.degree} | <span style="font-weight: 400; color: var(--text-muted);">${edu.university}</span></div>
+                        <div class="list-item-meta">${edu.date} &nbsp;📍 ${edu.location}</div>
+                        ${edu.details ? `<div class="details-content"><p>${edu.details}</p></div>` : ''}
+                    </div>
+                `;
+            });
+        }
+
+        // --- RENDER PROJECTS ---
+        const projContainer = document.getElementById("projects-container");
+        if (cvData.projects) {
+            cvData.projects.forEach(proj => {
+                const bulletsHTML = proj.bullets && proj.bullets.length > 0 ? `<ul>${proj.bullets.map(bullet => `<li>${bullet}</li>`).join('')}</ul>` : '';
+                const tagsHTML = proj.tags && proj.tags.length > 0 ? `<div class="tags-container">${proj.tags.map(tag => `<span class="tag ${tag.color}">${tag.name}</span>`).join('')}</div>` : '';
+                const linkHTML = proj.url ? `<a href="${proj.url}" target="_blank" class="project-link">${proj.url.replace('https://', '')}</a>` : '';
+
+                projContainer.innerHTML += `
+                    <div class="list-item">
+                        <div class="list-item-header">${proj.title}</div>
+                        ${linkHTML}
+                        <div class="details-content">
+                            ${proj.description ? `<p>${proj.description}</p>` : ''}
+                            ${bulletsHTML}
+                            ${tagsHTML}
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        // --- RENDER AFFILIATIONS & LANGUAGES ---
+        const affContainer = document.getElementById("affiliations-container");
+        if (cvData.affiliations) {
+            cvData.affiliations.forEach(aff => {
+                affContainer.innerHTML += `<li>${aff}</li>`;
+            });
+        }
+
+        const langContainer = document.getElementById("languages-container");
+        if (cvData.languages) {
+            cvData.languages.forEach(lang => {
+                langContainer.innerHTML += `
+                    <div><strong>${lang.language}</strong> <span style="color: var(--text-muted);">&mdash;</span> <span class="tag gray">${lang.proficiency}</span></div>
+                `;
+            });
+        }
+
+        // --- RENDER BIBLIOGRAPHY ---
+        const bibContainer = document.getElementById("bibliography-container");
+        if (cvData.bibliography) {
+            cvData.bibliography.forEach(item => {
+                // Bold the "Frecer, R." parts automatically just to make it pop
+                const formattedItem = item.replace('Frecer, R.', '<strong>Frecer, R.</strong>');
+                bibContainer.innerHTML += `<li>${formattedItem}</li>`;
+            });
+        }
+
+        // --- SCROLLSPY NAVIGATION ---
         const sections = document.querySelectorAll("main section");
         const navLinks = document.querySelectorAll(".nav-links a");
 
         const observerOptions = {
             root: null,
             rootMargin: "0px",
-            threshold: 0.3 // Trigger when 30% of the section is visible
+            threshold: 0.2
         };
 
         const observer = new IntersectionObserver((entries) => {
