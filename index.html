@@ -3,367 +3,417 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Robert Frecer | Operations & Product</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
-    
+    <title>Robert Frecer, PhD</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #101010;
-            --text: #E6E6E6;
-            --dim: #888888;
-            --accent: #CCFF00; /* Acid Green - Sharp & Modern */
-            --lines: #333333;
+            --bg-main: #ffffff;
+            --text-main: #1a1a1a;
+            --text-muted: #666666;
+            --border-color: #eaeaea;
+            --font-sans: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            
+            /* Skill Tag Colors (Mimicking Notion's pale backgrounds) */
+            --tag-green-bg: #e6f4ea; --tag-green-txt: #1e4620;
+            --tag-blue-bg: #e8f0fe; --tag-blue-txt: #113264;
+            --tag-gray-bg: #f1f3f4; --tag-gray-txt: #3c4043;
+            --tag-brown-bg: #f4ece1; --tag-brown-txt: #5c3a21;
+            --tag-red-bg: #fce8e6; --tag-red-txt: #702b24;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        
+
         body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 16px;
-            line-height: 1.5;
-            overflow-x: hidden;
+            font-family: var(--font-sans);
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
-        a { color: inherit; text-decoration: none; }
-        
-        /* --- THE GRID SYSTEM --- */
-        .grid-wrapper {
+        /* 1:2 Layout Grid */
+        .container {
             display: grid;
-            grid-template-columns: 300px 1fr; /* Fixed Sidebar / Fluid Content */
-            min-height: 100vh;
-            border-top: 1px solid var(--lines);
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
         }
 
-        /* --- SIDEBAR (Fixed Identity) --- */
+        /* --- SIDEBAR STYLES --- */
         .sidebar {
-            border-right: 1px solid var(--lines);
-            padding: 40px;
             position: sticky;
-            top: 0;
-            height: 100vh;
+            top: 4rem;
+            height: fit-content;
+            max-height: calc(100vh - 8rem);
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            gap: 2rem;
         }
 
-        .profile-img {
-            width: 100%;
-            aspect-ratio: 1/1;
-            object-fit: cover;
-            filter: grayscale(100%);
-            border: 1px solid var(--lines);
-            margin-bottom: 20px;
-            transition: filter 0.3s;
-        }
-        .sidebar:hover .profile-img { filter: grayscale(0%); }
-
-        h1 {
-            font-family: 'Syne', sans-serif;
-            font-weight: 800;
-            font-size: 2.5rem;
-            line-height: 1;
-            margin-bottom: 10px;
-            letter-spacing: -1px;
+        .profile-header h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
         }
 
-        .role-tag {
-            font-family: 'Space Grotesk', monospace;
-            color: var(--accent);
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-            margin-bottom: 30px;
-            display: block;
+        .profile-header .location {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .bio {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
         }
 
         .nav-links a {
-            display: block;
-            padding: 10px 0;
-            border-bottom: 1px solid var(--lines);
-            transition: 0.2s;
-        }
-        .nav-links a:hover { padding-left: 10px; color: var(--accent); border-color: var(--accent); }
-
-        /* --- MAIN CONTENT AREA --- */
-        .content {
-            display: grid;
-            grid-template-rows: auto auto 1fr;
+            text-decoration: none;
+            color: var(--text-muted);
+            padding: 0.25rem 0;
+            transition: color 0.2s;
         }
 
-        /* --- BIG STATEMENT HEADER --- */
-        .hero-statement {
-            padding: 80px 60px;
-            border-bottom: 1px solid var(--lines);
-            font-family: 'Syne', sans-serif;
-            font-size: clamp(2rem, 4vw, 3.5rem);
-            font-weight: 700;
-            line-height: 1.1;
-        }
-        .hero-statement span { color: var(--dim); }
-
-        /* --- SECTION HEADERS --- */
-        .section-label {
-            font-family: 'Space Grotesk', monospace;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            padding: 20px 60px;
-            border-bottom: 1px solid var(--lines);
-            color: var(--dim);
-            position: sticky;
-            top: 0;
-            background: var(--bg);
-            z-index: 10;
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--text-main);
+            font-weight: 600;
         }
 
-        /* --- PROJECTS (The Horizontal Scroll / Grid feel) --- */
-        .projects-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr; /* 2 Column Grid */
-        }
-
-        .project-item {
-            border-right: 1px solid var(--lines);
-            border-bottom: 1px solid var(--lines);
-            position: relative;
-            group: pointer;
-            transition: background 0.2s;
-        }
-        .project-item:nth-child(even) { border-right: none; }
-        .project-item:hover { background: #1a1a1a; }
-
-        .p-image-wrap {
-            width: 100%;
-            height: 300px;
-            overflow: hidden;
-            border-bottom: 1px solid var(--lines);
-        }
-        .p-image-wrap img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-            filter: grayscale(100%);
-        }
-        .project-item:hover .p-image-wrap img { transform: scale(1.05); filter: grayscale(0%); }
-
-        .p-info { padding: 30px; }
-        .p-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.5rem; margin-bottom: 5px; }
-        .p-desc { color: var(--dim); font-size: 0.9rem; margin-bottom: 15px; }
-        .p-tags span { border: 1px solid var(--lines); padding: 2px 8px; font-size: 0.7rem; margin-right: 5px; border-radius: 20px;}
-
-        /* --- EXPERIENCE LIST (Table Style) --- */
-        .exp-row {
-            display: grid;
-            grid-template-columns: 150px 1fr;
-            border-bottom: 1px solid var(--lines);
-            padding: 40px 60px;
-            transition: 0.2s;
-        }
-        .exp-row:hover { background: #1a1a1a; }
-        .exp-row:last-child { border-bottom: none; }
-
-        .exp-date { font-family: 'Space Grotesk', monospace; color: var(--accent); font-size: 0.9rem; }
-        .exp-role h3 { font-family: 'Syne', sans-serif; font-size: 1.3rem; margin-bottom: 5px; }
-        .exp-company { font-weight: 400; color: var(--text); }
-        .exp-details { margin-top: 15px; color: var(--dim); font-size: 0.95rem; max-width: 600px; }
-
-        /* --- BIBLIOGRAPHY (Compact) --- */
-        .biblio-grid {
-            padding: 40px 60px;
-            display: grid;
-            gap: 15px;
-            border-bottom: 1px solid var(--lines);
-        }
-        .citation {
-            font-family: 'Space Grotesk', monospace;
+        .contact-links {
+            display: flex;
+            gap: 1rem;
+            font-family: var(--font-mono);
             font-size: 0.85rem;
-            color: var(--dim);
-            padding-left: 20px;
-            border-left: 1px solid var(--lines);
         }
-        .citation strong { color: var(--text); }
 
-        /* --- RESPONSIVE --- */
-        @media (max-width: 900px) {
-            .grid-wrapper { grid-template-columns: 1fr; border-top: none; }
-            .sidebar { height: auto; position: relative; border-right: none; border-bottom: 1px solid var(--lines); padding: 30px; }
-            .hero-statement { font-size: 2rem; padding: 40px 30px; }
-            .projects-container { grid-template-columns: 1fr; }
-            .project-item { border-right: none; }
-            .section-label, .exp-row, .biblio-grid { padding-left: 30px; padding-right: 30px; }
-            .exp-row { grid-template-columns: 1fr; gap: 10px; }
+        .contact-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            border-bottom: 1px solid transparent;
+        }
+        
+        .contact-links a:hover { border-bottom-color: var(--text-main); }
+
+        /* --- MAIN CONTENT STYLES --- */
+        .content {
+            display: flex;
+            flex-direction: column;
+            gap: 5rem;
+        }
+
+        section h2 {
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        /* Toggles / Dropdowns for Experience */
+        details {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+        }
+
+        summary {
+            font-weight: 500;
+            cursor: pointer;
+            list-style: none; /* Hide default arrow */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+
+        summary::-webkit-details-marker { display: none; } /* Hide default arrow webkit */
+
+        summary:hover { color: var(--text-muted); }
+
+        .role-title { font-weight: 600; }
+        .role-company { color: var(--text-muted); font-weight: 400; }
+        .role-date { font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted); }
+
+        .details-content {
+            padding-top: 1rem;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .details-content ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .details-content li { margin-bottom: 0.5rem; }
+
+        /* Skill Tags */
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .tag.green { background-color: var(--tag-green-bg); color: var(--tag-green-txt); }
+        .tag.blue { background-color: var(--tag-blue-bg); color: var(--tag-blue-txt); }
+        .tag.gray { background-color: var(--tag-gray-bg); color: var(--tag-gray-txt); }
+        .tag.brown { background-color: var(--tag-brown-bg); color: var(--tag-brown-txt); }
+        .tag.red { background-color: var(--tag-red-bg); color: var(--tag-red-txt); }
+
+        /* Generic lists for Education/Bibliography */
+        .standard-list li {
+            margin-bottom: 1.5rem;
+            list-style: none;
+        }
+        
+        .standard-list strong { color: var(--text-main); }
+        .standard-list .date-location {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: block;
+            margin: 0.2rem 0 0.5rem 0;
+        }
+
+        /* Mobile Stacking */
+        @media (max-width: 800px) {
+            .container {
+                grid-template-columns: 1fr;
+                padding: 2rem 1.5rem;
+                gap: 3rem;
+            }
+            .sidebar {
+                position: relative;
+                top: 0;
+                max-height: none;
+            }
+            .nav-links { display: none; } /* Hide scrollspy on mobile to save space */
+            summary { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="grid-wrapper">
+<div class="container">
+    <aside class="sidebar">
+        <div class="profile-header">
+            <h1>Robert Frecer, PhD</h1>
+            <div class="location">📍 Prague, Czechia</div>
+        </div>
         
-        <aside class="sidebar">
-            <div>
-                <img src="./images/eef846f3-32a6-4e22-9beb-c49e30e04eac.png" alt="Robert Frecer" class="profile-img">
-                <h1>Robert<br>Frecer</h1>
-                <span class="role-tag">PhD / Ops Director / Dev</span>
-            </div>
+        <div class="bio">
+            <p>My background is in Classical Archaeology, and I’ve worked in the technology and merchandising sectors in management roles for over 10 years. Granted, these are diverse fields, but one thing I think all projects share is a need for resource efficiency.</p>
+            <br>
+            <p>I’ve built and scaled international, high-performing teams, engineered and implemented strategies to achieve cost-cutting and optimization, and led projects ranging from complex post-merger integrations to the delivery of risk management services to governments.</p>
+            <br>
+            <p>I believe the best solutions to every problem are out there, you just have to be willing to find them.</p>
+        </div>
 
-            <nav class="nav-links">
-                <a href="#projects">01. Projects</a>
-                <a href="#experience">02. Experience</a>
-                <a href="#education">03. Education</a>
-                <a href="https://www.linkedin.com/in/robert-frecer-924561169" target="_blank">LinkedIn ↗</a>
-                <a href="mailto:your@email.com">Email ↗</a>
-            </nav>
+        <nav class="nav-links">
+            <a href="#experience" class="nav-link active">// Experience</a>
+            <a href="#education" class="nav-link">// Education</a>
+            <a href="#projects" class="nav-link">// Projects</a>
+            <a href="#skills" class="nav-link">// Skills & Languages</a>
+            <a href="#bibliography" class="nav-link">// Bibliography</a>
+        </nav>
 
-            <div style="font-size: 0.75rem; color: var(--dim);">
-                Based in Prague.<br>
-                Available for consulting.
-            </div>
-        </aside>
+        <div class="contact-links">
+            <a href="https://www.linkedin.com/in/robert-frecer-924561169" target="_blank">LinkedIn</a>
+            <a href="https://cuni.academia.edu/RobertFrecer" target="_blank">Academia</a>
+            <a href="https://www.goodreads.com/author/show/8585122.Robert_Frecer" target="_blank">Goodreads</a>
+        </div>
+    </aside>
 
-        <main class="content">
+    <main class="content">
+        
+        <section id="experience">
+            <h2>// Experience</h2>
             
-            <div class="hero-statement">
-                Bridging the gap between <span>Classical Archaeology</span> and <span>Technical Operations</span>. I build systems, scale teams, and design efficient digital products.
-            </div>
+            <details>
+                <summary>
+                    <span><span class="role-title">Business Consultant</span> <span class="role-company">| Gisat</span></span>
+                    <span class="role-date">Mar 2023 – present</span>
+                </summary>
+                <div class="details-content">
+                    <ul>
+                        <li>Designed and implemented new tools and workflows for a 35-member R&D team using Google Workspace and Notion</li>
+                        <li>Developed and delivered training in project management to employees in management roles</li>
+                        <li>Led projects delivering EO services to international clients</li>
+                        <li>Implemented a new performance evaluation framework to foster accountability and ownership</li>
+                        <li>Initiated and directed an overhaul of brand identity and communication strategy</li>
+                    </ul>
+                    <div class="tags-container">
+                        <span class="tag green">Process engineering</span>
+                        <span class="tag green">Strategic planning</span>
+                        <span class="tag blue">Project management</span>
+                        <span class="tag gray">Notion</span>
+                        <span class="tag blue">Process implementation</span>
+                        <span class="tag gray">React.js</span>
+                        <span class="tag blue">Performance evaluation</span>
+                        <span class="tag gray">Google Workspace</span>
+                        <span class="tag gray">Figma</span>
+                    </div>
+                </div>
+            </details>
 
-            <div class="section-label" id="projects">01 // Selected Work</div>
+            <details>
+                <summary>
+                    <span><span class="role-title">Site Director</span> <span class="role-company">| Represent.com</span></span>
+                    <span class="role-date">Apr 2022 – Feb 2023</span>
+                </summary>
+                <div class="details-content">
+                    <ul>
+                        <li>Directed all site operations for the Prague office, overseeing a team of approximately 20 employees</li>
+                        <li>Managed the Czech corporate entity with full legal, payroll and regulatory responsibilities</li>
+                    </ul>
+                    <div class="tags-container">
+                        <span class="tag blue">Site operations</span>
+                        <span class="tag blue">Performance evaluation</span>
+                        <span class="tag blue">Process implementation</span>
+                        <span class="tag red">Legal compliance</span>
+                        <span class="tag gray">Google Workspace</span>
+                    </div>
+                </div>
+            </details>
             
-            <div class="projects-container">
-                
-                <a href="https://terezfrecerova.sk/" target="_blank" class="project-item">
-                    <div class="p-image-wrap">
-                        <img src="./images/Screenshot_2026-01-21_at_14.40.04.png" alt="Terez Portfolio">
-                    </div>
-                    <div class="p-info">
-                        <div class="p-title">Terez Frecerová</div>
-                        <div class="p-desc">Bold, neobrutalist artist portfolio.</div>
-                        <div class="p-tags">
-                            <span>React.js</span>
-                            <span>Design</span>
-                            <span>2026</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="https://gisat.github.io/app-slim-maps/" target="_blank" class="project-item">
-                    <div class="p-image-wrap">
-                        <img src="./images/Screenshot_2026-01-21_at_14.40.50.png" alt="SLIM Maps">
-                    </div>
-                    <div class="p-info">
-                        <div class="p-title">SLIM Zambia</div>
-                        <div class="p-desc">Geospatial risk management dashboard.</div>
-                        <div class="p-tags">
-                            <span>GIS</span>
-                            <span>Data Viz</span>
-                            <span>Gov</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="https://rfrecer.github.io/spanodolinske-granty/" target="_blank" class="project-item">
-                    <div class="p-image-wrap">
-                        <img src="./images/Screenshot_2026-01-21_at_14.45.06.png" alt="Waterwells">
-                    </div>
-                    <div class="p-info">
-                        <div class="p-title">Špaňodolinské Granty</div>
-                        <div class="p-desc">Interactive historical preservation map.</div>
-                        <div class="p-tags">
-                            <span>Mapping</span>
-                            <span>History</span>
-                        </div>
-                    </div>
-                </a>
-
-                <div class="project-item" style="cursor: default;">
-                    <div class="p-info" style="height: 100%; display: flex; flex-direction: column; justify-content: center;">
-                        <div class="p-title" style="color: var(--dim);">Field Research</div>
-                        <div class="p-desc">
-                            > Bratislava Castle (2009)<br>
-                            > Eryx, Sicily (2013)<br>
-                            > Stroyno, Bulgaria (2015)
-                        </div>
+            <details>
+                <summary>
+                    <span><span class="role-title">Director of Ops & Customer Exp</span> <span class="role-company">| Represent.com</span></span>
+                    <span class="role-date">Jul 2018 – Jan 2023</span>
+                </summary>
+                <div class="details-content">
+                    <ul>
+                        <li>Managed team leaders in Operations and Customer Experience departments, fostering a culture of positive and honest leadership</li>
+                        <li>Prepared cost-benefit analyses for major strategic initiatives to inform executive decision-making</li>
+                        <li>Acted in various roles as VOC, stakeholder and product owner for API integrations with internal and external engineering teams</li>
+                    </ul>
+                    <div class="tags-container">
+                        <span class="tag blue">Performance evaluation</span>
+                        <span class="tag blue">Project management</span>
+                        <span class="tag green">Strategic planning</span>
+                        <span class="tag gray">Google Workspace</span>
                     </div>
                 </div>
+            </details>
 
-            </div>
+        </section>
 
-            <div class="section-label" id="experience">02 // Operations History</div>
+        <section id="education">
+            <h2>// Education</h2>
+            <ul class="standard-list">
+                <li>
+                    <strong>Doctor of Philosophy (PhD.), Classical Archaeology</strong> | Charles University
+                    <span class="date-location">Sep 2007 – Jun 2015  📍 Prague</span>
+                    <p class="details-content">Doctoral thesis: <em>Gerulata: The Lamps. Roman Lamps in a Provincial Context</em>. Conducted research in the economy of Roman lamps and proposed an original model of production by subsidiary workshops that explained finds of lamp “copies” which had long been misattributed.</p>
+                </li>
+                <li>
+                    <strong>Master of Arts (Mgr.), Classical Archaeology</strong> | Charles University
+                    <span class="date-location">Sep 2010 – Sep 2012  📍 Prague</span>
+                </li>
+            </ul>
+        </section>
 
-            <div class="exp-row">
-                <div class="exp-date">2023 — PRES</div>
-                <div class="exp-role">
-                    <h3>Business Consultant</h3>
-                    <div class="exp-company">Gisat, Prague</div>
-                    <div class="exp-details">
-                        Designed workflows for a 35-person R&D team using Notion & Google Workspace. Leading international EO service delivery.
-                    </div>
+        <section id="skills">
+            <h2>// Skills & Languages</h2>
+            <div class="details-content">
+                <p><strong>Management & Strategy</strong></p>
+                <div class="tags-container" style="margin-bottom: 1.5rem;">
+                    <span class="tag green">Strategic planning</span>
+                    <span class="tag green">Cost-benefit analysis</span>
+                    <span class="tag green">Process engineering</span>
+                    <span class="tag blue">Project management</span>
+                    <span class="tag blue">Process implementation</span>
+                    <span class="tag blue">Performance evaluation</span>
+                    <span class="tag blue">Site operations</span>
+                </div>
+
+                <p><strong>Technical & Tools</strong></p>
+                <div class="tags-container" style="margin-bottom: 1.5rem;">
+                    <span class="tag gray">React.js</span>
+                    <span class="tag gray">Frontend design</span>
+                    <span class="tag gray">SQL</span>
+                    <span class="tag gray">Notion</span>
+                    <span class="tag gray">UI design</span>
+                    <span class="tag gray">Google Workspace</span>
+                    <span class="tag gray">Figma</span>
+                </div>
+
+                <p><strong>Languages</strong></p>
+                <div class="tags-container">
+                    <span class="tag gray">Slovak (Native)</span>
+                    <span class="tag gray">English (Fluent)</span>
+                    <span class="tag gray">German (Proficient)</span>
+                    <span class="tag gray">Czech (Proficient)</span>
                 </div>
             </div>
+        </section>
 
-            <div class="exp-row">
-                <div class="exp-date">2022 — 2023</div>
-                <div class="exp-role">
-                    <h3>Site Director</h3>
-                    <div class="exp-company">Represent.com, Prague</div>
-                    <div class="exp-details">
-                        Directed all site operations (~20 employees). Managed full legal, payroll and regulatory responsibilities for the Czech entity.
-                    </div>
-                </div>
-            </div>
+        <section id="bibliography">
+            <h2>// Bibliography</h2>
+            <ul class="standard-list" style="font-size: 0.9rem; color: var(--text-muted);">
+                <li><strong>Frecer, R. 2015.</strong> <em>Gerulata: The Lamps. Roman Lamps in a Provincial Context</em>. Prague: Karolinum, 420 p.</li>
+                <li><strong>Frecer, R. 2015.</strong> <em>New evidence on the organization of the Roman lamp industry. The lamps of Gerulata (Bratislava-Rusovce)</em>. Paper presented at the XXIII. Limes Congress in Ingolstadt, Germany.</li>
+                <li><strong>Frecer, R. 2015.</strong> (ed.) <em>Contacts, Migrations and Climate Change: Conference in honor of Jan Bouzek</em>. Prague: Institute of Classical Archaeology, 82 p.</li>
+            </ul>
+        </section>
 
-            <div class="exp-row">
-                <div class="exp-date">2018 — 2023</div>
-                <div class="exp-role">
-                    <h3>Director of Ops & CX</h3>
-                    <div class="exp-company">Represent.com</div>
-                    <div class="exp-details">
-                        Product Owner for API integrations. Prepared cost-benefit analyses for major strategic initiatives.
-                    </div>
-                </div>
-            </div>
+    </main>
+</div>
 
-            <div class="exp-row">
-                <div class="exp-date">2016 — 2018</div>
-                <div class="exp-role">
-                    <h3>Head of CX</h3>
-                    <div class="exp-company">Represent.com</div>
-                    <div class="exp-details">
-                        Built and scaled high-performing CX teams in Prague and Los Angeles. Partnered with engineering on dashboard UI.
-                    </div>
-                </div>
-            </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const sections = document.querySelectorAll("main section");
+        const navLinks = document.querySelectorAll(".nav-links a");
 
-            <div class="section-label" id="education">03 // Academic Archive</div>
+        const observerOptions = {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.3 // Trigger when 30% of the section is visible
+        };
 
-            <div class="exp-row" style="border-bottom: 1px solid var(--lines);">
-                <div class="exp-date">2007 — 2015</div>
-                <div class="exp-role">
-                    <h3>PhD, Classical Archaeology</h3>
-                    <div class="exp-company">Charles University</div>
-                    <div class="exp-details">
-                        Thesis: <em>Gerulata: The Lamps. Roman Lamps in a Provincial Context.</em> Research on the economy of subsidiary workshops.
-                    </div>
-                </div>
-            </div>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute("id");
+                    navLinks.forEach(link => {
+                        link.classList.remove("active");
+                        if (link.getAttribute("href") === `#${id}`) {
+                            link.classList.add("active");
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
 
-            <div class="biblio-grid">
-                <div style="font-family: 'Syne'; font-weight: 700; margin-bottom: 10px;">Selected Bibliography</div>
-                <div class="citation"><strong>Frecer, R. 2015.</strong> Gerulata: The Lamps. Roman Lamps in a Provincial Context. Prague: Karolinum.</div>
-                <div class="citation"><strong>Frecer, R. 2015.</strong> New evidence on the organization of the Roman lamp industry.</div>
-                <div class="citation"><strong>Frecer, R. 2014.</strong> A Unique Roman Upper Lamp Mold from Brigetio.</div>
-            </div>
-
-            <footer style="padding: 40px 60px; color: var(--dim); font-size: 0.8rem; border-top: 1px solid var(--lines);">
-                © 2026 Robert Frecer
-            </footer>
-
-        </main>
-    </div>
+        sections.forEach(section => observer.observe(section));
+    });
+</script>
 
 </body>
 </html>
