@@ -126,6 +126,23 @@
             font-size: 0.9rem;
         }
 
+        /* Inline Editorial Links */
+        .inline-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            border-bottom: 1px solid var(--border-color);
+            transition: color 0.2s, border-bottom-color 0.2s;
+        }
+        .inline-link:hover {
+            color: var(--text-main);
+            border-bottom-color: var(--text-main);
+        }
+        /* Force italics for inline links inside specific sections */
+        #education-container .inline-link,
+        #bibliography-container .inline-link {
+            font-style: italic;
+        }
+
         /* Project Assets */
         .project-asset {
             width: 100%;
@@ -455,6 +472,9 @@
                     ? `<a href="${edu.url}" target="_blank" class="entity-link click-prevent">${edu.university}</a>` 
                     : `<span class="entity-link entity-no-link">${edu.university}</span>`;
 
+                // Render bullets exactly like experience
+                const bulletsHTML = edu.bullets && edu.bullets.length > 0 ? `<ul>${edu.bullets.map(b => `<li>${b}</li>`).join('')}</ul>` : '';
+
                 eduContainer.innerHTML += `
                     <details>
                         <summary>
@@ -467,7 +487,7 @@
                             </div>
                         </summary>
                         <div class="details-content">
-                            ${edu.details ? `<p>${edu.details}</p>` : ''}
+                            ${bulletsHTML}
                         </div>
                     </details>
                 `;
@@ -483,7 +503,6 @@
                     return skill ? `<span class="tag ${skill.color}">${skill.name}</span>` : '';
                 }).join('')}</div>` : '';
                 
-                // Using project-link class for the Double-Tap to Go logic
                 const entityHTML = proj.url 
                     ? `<a href="${proj.url}" target="_blank" class="entity-link project-link">${proj.url.replace(/^https?:\/\//, '')}</a>` 
                     : '';
@@ -492,7 +511,6 @@
                     ? `<img src="${proj.image}" alt="Screenshot of ${proj.title}" class="project-asset">` 
                     : '';
 
-                // Now pulling directly from proj.thumbnail!
                 projContainer.innerHTML += `
                     <details class="project-details">
                         <summary>
@@ -524,13 +542,9 @@
             link.addEventListener('click', (e) => {
                 const details = link.closest('details');
                 if (!details.open) {
-                    // Accordion is closed. Prevent navigation...
                     e.preventDefault(); 
-                    // ...and manually snap the accordion open instead.
                     details.open = true; 
                 } else {
-                    // Accordion is open. Let the browser navigate, but stop propagation 
-                    // so the accordion doesn't snap shut underneath.
                     e.stopPropagation(); 
                 }
             });
