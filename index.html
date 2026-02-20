@@ -48,13 +48,20 @@
         /* Sidebar Styles */
         .sidebar { display: flex; flex-direction: column; gap: 2rem; }
 
+        /* Tiered Profile Picture Scaling */
         .profile-pic {
-            width: 110px;
+            width: 110px; /* Base for Mobile */
             aspect-ratio: 1 / 1;
             object-fit: cover;
             border-radius: 50%;
             margin-bottom: 1.5rem;
             border: 1px solid var(--border-color);
+        }
+        @media (min-width: 801px) {
+            .profile-pic { width: 140px; } /* Laptops */
+        }
+        @media (min-width: 1200px) {
+            .profile-pic { width: 170px; } /* Large Desktop */
         }
 
         .profile-header h1 { font-family: var(--font-sans); font-size: 2rem; font-weight: 600; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
@@ -96,10 +103,28 @@
             border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;
         }
 
-        /* Generic Content Formatting */
+        /* Monospace Chevron Bullet Points */
         .details-content { font-size: 0.95rem; color: var(--text-muted); padding-top: 1rem; }
-        .details-content ul { padding-left: 1.5rem; margin-bottom: 1rem; }
-        .details-content li { margin-bottom: 0.5rem; }
+        .details-content ul { 
+            list-style-type: none; 
+            padding-left: 0; 
+            margin-bottom: 1rem; 
+        }
+        .details-content li { 
+            position: relative;
+            padding-left: 1.25rem; 
+            margin-bottom: 0.5rem; 
+        }
+        .details-content li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-family: var(--font-mono);
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
 
         /* Project Assets */
         .project-asset {
@@ -121,10 +146,13 @@
         summary { 
             cursor: pointer; list-style: none; display: flex; 
             justify-content: space-between; align-items: flex-start; gap: 1rem; 
+            position: relative;
         }
         summary::-webkit-details-marker { display: none; }
         
+        /* Structure */
         .summary-left { display: flex; flex-direction: column; gap: 0.25rem; flex: 1; }
+        .summary-right { display: flex; flex-direction: column; gap: 0.25rem; align-items: flex-end; }
         
         .role-title { font-family: var(--font-sans); font-size: 1.1rem; font-weight: 600; color: var(--text-main); }
         
@@ -135,8 +163,22 @@
 
         .role-date { 
             font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted); 
-            white-space: nowrap; margin-left: auto; text-align: right; 
+            white-space: nowrap; text-align: right; 
         }
+        
+        /* Thumbnail Specifics */
+        .project-thumb { 
+            width: 44px; 
+            height: 44px; 
+            object-fit: cover; 
+            border-radius: 6px; 
+            border: 1px solid var(--border-color);
+            background-color: var(--tag-gray-bg);
+            transition: opacity 0.2s;
+        }
+        .project-thumb:hover { opacity: 0.8; }
+        .project-details summary { align-items: center; padding-right: 0; }
+        .project-details summary::after { content: none; display: none; }
 
         /* 2-Column Split for Affiliations & Languages */
         .split-section { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
@@ -170,13 +212,11 @@
 
         /* --- MOBILE RESPONSIVE RULES --- */
         @media (max-width: 800px) {
-            /* Extra bottom padding to account for the sticky footer */
             .container { grid-template-columns: 1fr; padding: 2rem 1.5rem 6rem 1.5rem; gap: 3rem; }
             .sidebar { position: relative; top: 0; }
             .sticky-panel { position: static; gap: 1.5rem; }
             .nav-links { display: none; }
             
-            /* Scaled down vertical padding */
             .content { gap: 3rem; }
             section { scroll-margin-top: 3rem; }
             details { margin-bottom: 1rem; padding-bottom: 1rem; }
@@ -186,13 +226,38 @@
                 flex-direction: column; 
                 align-items: flex-start; 
                 gap: 0.25rem; 
-                position: relative; 
-                padding-right: 1.5rem; /* Make room for the pseudo-element toggle */
+                padding-right: 1.5rem; 
             }
-            .summary-left { gap: 0.15rem; }
-            .role-date { margin-left: 0; text-align: left; }
+            .summary-left { gap: 0.15rem; width: 100%; }
             
-            /* Pure CSS Naked Mobile Toggle Icons */
+            .summary-right { 
+                flex-direction: row; 
+                justify-content: space-between; 
+                align-items: center;
+                width: 100%; 
+                margin-top: 0.25rem; 
+            }
+            .role-date { text-align: left; }
+
+            /* Project Specific Mobile Overrides */
+            .project-details summary {
+                flex-direction: row; 
+                padding-right: 0; 
+                justify-content: space-between;
+                align-items: center;
+            }
+            .project-details .summary-left {
+                width: auto;
+                flex: 1;
+                padding-right: 1rem; 
+            }
+            .project-details .summary-right {
+                width: auto;
+                margin-top: 0;
+                justify-content: center;
+            }
+            
+            /* Pure CSS Naked Mobile Toggle Icons (For everything except projects) */
             summary::after {
                 content: '+';
                 position: absolute;
@@ -206,10 +271,11 @@
                 content: '-';
                 color: var(--text-main);
             }
+            .project-details summary::after { display: none; }
 
             .split-section { grid-template-columns: 1fr; gap: 3rem; }
 
-            /* Sticky Mobile Footer: Inverted Stark */
+            /* Sticky Mobile Footer Styling: Glassmorphism */
             .mobile-footer {
                 display: flex;
                 justify-content: space-between;
@@ -218,19 +284,18 @@
                 bottom: 0;
                 left: 0;
                 width: 100%;
-                background-color: var(--text-main); /* Black background */
+                background-color: rgba(255, 255, 255, 0.55); 
+                -webkit-backdrop-filter: blur(14px) saturate(150%);
+                backdrop-filter: blur(14px) saturate(150%);
+                border-top: 1px solid var(--border-color);
                 padding: 1rem 1.5rem;
                 font-family: var(--font-mono);
                 font-size: 0.85rem;
                 z-index: 1000;
             }
-            .mobile-footer a {
-                color: #ffffff; /* White text */
-                text-decoration: none;
-            }
-            .mobile-footer .mf-email {
-                border-bottom: 1px dashed #666666; /* Muted dash for contrast */
-            }
+            .mobile-footer a { color: var(--text-main); text-decoration: none; }
+            .mobile-footer .mf-email { border-bottom: 1px dashed var(--text-muted); transition: border-bottom-color 0.2s; }
+            .mobile-footer .mf-email:hover { border-bottom-style: solid; border-bottom-color: var(--text-main); }
         }
     </style>
 </head>
@@ -243,17 +308,10 @@
             <h1>Robert Frecer, PhD</h1>
         </div>
         
-        <div class="bio">
-            <p>My background is in Classical Archaeology, and I’ve worked in the technology and merchandising sectors in management roles for over 10 years. Granted, these are diverse fields, but one thing I think all projects share is a need for resource efficiency.</p>
-            <br>
-            <p>I’ve built and scaled international, high-performing teams, engineered and implemented strategies to achieve cost-cutting and optimization, and led projects ranging from complex post-merger integrations to the delivery of risk management services to governments.</p>
-            <br>
-            <p>I believe the best solutions to every problem are out there, you just have to be willing to find them.</p>
-        </div>
+        <div class="bio" id="bio-container"></div>
 
         <div class="sticky-panel">
-            <div class="contact-links" id="contact-container">
-                </div>
+            <div class="contact-links" id="contact-container"></div>
 
             <nav class="nav-links">
                 <a href="#top" class="back-to-top">↑ Top</a>
@@ -309,8 +367,7 @@
     </main>
 </div>
 
-<div class="mobile-footer" id="mobile-footer">
-    </div>
+<div class="mobile-footer" id="mobile-footer"></div>
 
 <script src="data.js"></script>
 
@@ -324,19 +381,23 @@
             profilePicEl.src = cvData.personal.profilePic;
         }
 
+        // --- RENDER BIO ---
+        const bioContainer = document.getElementById("bio-container");
+        if (cvData.bio && cvData.bio.length > 0) {
+            bioContainer.innerHTML = cvData.bio.map(paragraph => `<p>${paragraph}</p>`).join('<br>');
+        }
+
         // --- RENDER CONTACT INFO ---
         const contactContainer = document.getElementById("contact-container");
         const mobileFooter = document.getElementById("mobile-footer");
         
         if (cvData.personal) {
-            // Dynamically build social links array
             let socialLinks = [];
             if (cvData.personal.github) socialLinks.push(`<a href="${cvData.personal.github}" target="_blank">GitHub</a>`);
             if (cvData.personal.linkedin) socialLinks.push(`<a href="${cvData.personal.linkedin}" target="_blank">LinkedIn</a>`);
             if (cvData.personal.academia) socialLinks.push(`<a href="${cvData.personal.academia}" target="_blank">Academia</a>`);
             if (cvData.personal.goodreads) socialLinks.push(`<a href="${cvData.personal.goodreads}" target="_blank">Goodreads</a>`);
 
-            // Inject Desktop Contact Block
             contactContainer.innerHTML = `
                 <a href="mailto:${cvData.personal.email}">${cvData.personal.email}</a>
                 <div style="display: flex; gap: 1rem; margin-top: 0.25rem;">
@@ -344,14 +405,12 @@
                 </div>
             `;
             
-            // Inject Mobile Sticky Footer
             mobileFooter.innerHTML = `
                 <a href="mailto:${cvData.personal.email}" class="mf-email">${cvData.personal.email}</a>
                 <a href="#top" class="mf-top">↑ Top</a>
             `;
         }
 
-        // --- HELPER FUNCTION: Get Skill Object by ID ---
         const getSkill = (tagId) => cvData.skills.find(s => s.id === tagId);
 
         // --- RENDER EXPERIENCE ---
@@ -359,8 +418,6 @@
         if (cvData.experience) {
             cvData.experience.forEach(job => {
                 const bulletsHTML = job.bullets && job.bullets.length > 0 ? `<ul>${job.bullets.map(b => `<li>${b}</li>`).join('')}</ul>` : '';
-                
-                // Dynamically pull full skill objects via ID matching
                 const tagsHTML = job.tags && job.tags.length > 0 ? `<div class="skills-row" style="margin-top: 1.5rem;">${job.tags.map(tagId => {
                     const skill = getSkill(tagId);
                     return skill ? `<span class="tag ${skill.color}">${skill.name}</span>` : '';
@@ -377,7 +434,9 @@
                                 <span class="role-title">${job.title}</span> 
                                 ${entityHTML}
                             </div>
-                            <span class="role-date">${job.date}</span>
+                            <div class="summary-right">
+                                <span class="role-date">${job.date}</span>
+                            </div>
                         </summary>
                         <div class="details-content">
                             ${bulletsHTML}
@@ -403,7 +462,9 @@
                                 <span class="role-title">${edu.degree}</span> 
                                 ${entityHTML}
                             </div>
-                            <span class="role-date">${edu.date}</span>
+                            <div class="summary-right">
+                                <span class="role-date">${edu.date}</span>
+                            </div>
                         </summary>
                         <div class="details-content">
                             ${edu.details ? `<p>${edu.details}</p>` : ''}
@@ -422,22 +483,26 @@
                     return skill ? `<span class="tag ${skill.color}">${skill.name}</span>` : '';
                 }).join('')}</div>` : '';
                 
+                // Using project-link class for the Double-Tap to Go logic
                 const entityHTML = proj.url 
-                    ? `<a href="${proj.url}" target="_blank" class="entity-link click-prevent">${proj.url.replace(/^https?:\/\//, '')}</a>` 
+                    ? `<a href="${proj.url}" target="_blank" class="entity-link project-link">${proj.url.replace(/^https?:\/\//, '')}</a>` 
                     : '';
                 
                 const imageHTML = proj.image 
                     ? `<img src="${proj.image}" alt="Screenshot of ${proj.title}" class="project-asset">` 
                     : '';
 
+                // Now pulling directly from proj.thumbnail!
                 projContainer.innerHTML += `
-                    <details>
+                    <details class="project-details">
                         <summary>
                             <div class="summary-left">
                                 <span class="role-title">${proj.title}</span>
                                 ${entityHTML}
                             </div>
-                            <span class="role-date">${proj.date}</span>
+                            <div class="summary-right">
+                                ${proj.thumbnail ? `<img src="${proj.thumbnail}" class="project-thumb" alt="Thumbnail">` : ''}
+                            </div>
                         </summary>
                         <div class="details-content">
                             ${imageHTML}
@@ -449,12 +514,29 @@
             });
         }
 
-        // --- PREVENT LINKS IN HEADERS FROM TOGGLING DETAILS ---
+        // --- INTERACTION LOGIC: STANDARD LINKS ---
         document.querySelectorAll('.click-prevent').forEach(link => {
             link.addEventListener('click', (e) => e.stopPropagation());
         });
 
-        // --- RENDER SKILLS MAIN SECTION (GROUPED BY COLOR BY ROW) ---
+        // --- INTERACTION LOGIC: PROJECT LINKS (DOUBLE-TAP TO GO) ---
+        document.querySelectorAll('.project-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const details = link.closest('details');
+                if (!details.open) {
+                    // Accordion is closed. Prevent navigation...
+                    e.preventDefault(); 
+                    // ...and manually snap the accordion open instead.
+                    details.open = true; 
+                } else {
+                    // Accordion is open. Let the browser navigate, but stop propagation 
+                    // so the accordion doesn't snap shut underneath.
+                    e.stopPropagation(); 
+                }
+            });
+        });
+
+        // --- RENDER SKILLS MAIN SECTION ---
         const skillsContainer = document.getElementById("skills-container");
         if (cvData.skills) {
             const colorOrder = ["green", "blue", "brown", "gray", "yellow", "default", "orange"];
@@ -480,7 +562,7 @@
             });
         }
 
-        // --- RENDER AFFILIATIONS (GRID ALIGNED) ---
+        // --- RENDER AFFILIATIONS ---
         const affContainer = document.getElementById("affiliations-container");
         if (cvData.affiliations) {
             cvData.affiliations.forEach(aff => {
@@ -493,7 +575,7 @@
             });
         }
 
-        // --- RENDER LANGUAGES (GRID ALIGNED NO DASH) ---
+        // --- RENDER LANGUAGES ---
         const langContainer = document.getElementById("languages-container");
         if (cvData.languages) {
             cvData.languages.forEach(lang => {
@@ -519,7 +601,7 @@
             });
         }
 
-        // --- SCROLLSPY NAVIGATION WITH "TRIPWIRE" LOGIC ---
+        // --- SCROLLSPY NAVIGATION ---
         const sections = document.querySelectorAll("main section");
         const navLinks = document.querySelectorAll(".nav-links a.nav-link");
         

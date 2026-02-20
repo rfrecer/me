@@ -8,6 +8,12 @@ const cvData = {
         goodreads: "https://www.goodreads.com/author/show/8585122.Robert_Frecer"
     },
 
+    bio: [
+        "My background is in Classical Archaeology, and I’ve worked in the technology and merchandising sectors in management roles for over 10 years. Granted, these are diverse fields, but one thing I think all projects share is a need for resource efficiency.",
+        "I’ve built and scaled international, high-performing teams, engineered and implemented strategies to achieve cost-cutting and optimization, and led projects ranging from complex post-merger integrations to the delivery of risk management services to governments.",
+        "I believe the best solutions to every problem are out there, you just have to be willing to find them."
+    ],
+
     skills: [
         { id: "strat_plan", name: "Strategic planning", color: "green" },
         { id: "cost_ben", name: "Cost-benefit analysis", color: "green" },
@@ -158,6 +164,7 @@ const cvData = {
             title: "Terez Frecerová Portfolio",
             url: "https://terezfrecerova.sk/",
             date: "2026",
+            thumbnail: "assets/terez-frecerova-1.jpg",
             image: "assets/terez-frecerova-2.jpg",
             description: "Artist portfolio website for singer, songwriter and author Terez Frecerová.",
             tags: [
@@ -168,6 +175,7 @@ const cvData = {
             title: "Sustainable Landscape for Integrated Management",
             url: "https://gisat.github.io/app-slim-maps/",
             date: "2023 – 2024",
+            thumbnail: "assets/slim-1.jpg",
             image: "assets/slim-2.jpg",
             description: "A series of geospatial products showing the dynamics of landscape change and risk of natural disasters such as floods, wildfires and drought, in Zambia. Services were developed in close cooperation with Zambian government and public institutions through in-person user research, validation, and training. The project was funded by CzechAid.",
             tags: [
@@ -178,6 +186,7 @@ const cvData = {
             title: "Špaňodolinské granty",
             url: "https://rfrecer.github.io/spanodolinske-granty/",
             date: "2025",
+            thumbnail: "assets/granty-2.jpg",
             image: "assets/granty-1.jpg",
             description: "A map of traditional waterwells in the historical mining village of Špania Dolina, Slovakia. This medieval network of mountain streams was engineered to supply the village with drinking water but has recently mostly dried out or become polluted. The project aims to initiate restoration efforts of this unique water source, its importance highlighted by recent years of drought caused by climate change.",
             tags: [
@@ -188,6 +197,7 @@ const cvData = {
             title: "Archaeological Fieldwork & Research",
             url: "",
             date: "2009 – 2015",
+            thumbnail: "assets/archaeology-1.jpg",
             image: "assets/archaeology-2.jpg",
             description: "Directed international archaeological excavations and surveys across Slovakia, Sicily, and Bulgaria. Key achievements include the discovery of Roman-style buildings and a Celtic coin hoard at Bratislava Castle, the comprehensive study and publication of Roman lamps from Gerulata, and the mapping of ancient city walls in Eryx, Sicily. This fieldwork required rigorous project management, cross-border academic collaboration, and extensive data analysis.",
             tags: [
