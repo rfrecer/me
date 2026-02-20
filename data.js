@@ -18,7 +18,6 @@ const cvData = {
         { id: "cost_ben", name: "Cost-benefit analysis", color: "green" },
         { id: "proc_eng", name: "Process engineering", color: "green" },
         { id: "proj_man", name: "Project management", color: "blue" },
-        { id: "tech_pm", name: "Technical project management", color: "blue" },
         { id: "proc_imp", name: "Process implementation", color: "blue" },
         { id: "rom_arch", name: "Roman archaeology", color: "brown" },
         { id: "anc_econ", name: "Ancient economy", color: "brown" },
@@ -131,7 +130,7 @@ const cvData = {
             url: "",
             date: "Jun 2007 – Mar 2015",
             bullets: [
-                "Translated legal and medical texts for various clients including O2, the Ministry of Health (Slovakia), and Union"
+                "Translated legal and medical texts for various clients including Orange, the Ministry of Health (Slovakia), and Union"
             ],
             tags: []
         }
@@ -199,7 +198,7 @@ const cvData = {
             image: "assets/slim-2.jpg",
             description: "Managed the delivery of a suite of geospatial products for the Zambian public sector, funded by CzechAid. Coordinated directly with ministries and agencies on the ground in Zambia to gather user requirements, acting as the primary bridge between stakeholders and two distinct technical teams (Earth Observation data and Web Application development). Rapidly prototyped and deployed the initial public-facing portal to house the data, ensuring UI/UX consistency across products, while overseeing the long-term development of the final platform.",
             tags: [
-                "tech_pm", "web_mapping", "ui_des"
+                "web_mapping", "ui_des"
             ]
         },
         {
