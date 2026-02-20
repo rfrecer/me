@@ -30,7 +30,7 @@ const cvData = {
         { id: "ui_des", name: "UI design", color: "gray" },
         { id: "g_workspace", name: "Google Workspace", color: "gray" },
         { id: "figma", name: "Figma", color: "gray" },
-        { id: "web_mapping", name: "Web mapping", color: "yellow" },
+        { id: "web_mapping", name: "Web mapping", color: "gray" },
         { id: "perf_eval", name: "Performance evaluation", color: "yellow" },
         { id: "uni_teach", name: "University teaching", color: "yellow" },
         { id: "site_ops", name: "Site operations", color: "default" },
