@@ -145,7 +145,7 @@
         }
         /* Force italics for inline links inside specific sections */
         #education-container .inline-link,
-        #bibliography-container .inline-link {
+        #publications-container .inline-link {
             font-style: italic;
         }
 
@@ -339,11 +339,11 @@
             <nav class="nav-links">
                 <a href="#top" class="back-to-top">↑ Top</a>
                 <a href="#experience" class="nav-link active">// Experience</a>
-                <a href="#education" class="nav-link">// Education</a>
                 <a href="#projects" class="nav-link">// Projects</a>
                 <a href="#skills" class="nav-link">// Skills</a>
+                <a href="#education" class="nav-link">// Education</a>
                 <a href="#affiliations" class="nav-link">// Affiliations & Languages</a>
-                <a href="#bibliography" class="nav-link">// Bibliography</a>
+                <a href="#publications" class="nav-link">// Publications</a>
             </nav>
         </div>
     </aside>
@@ -355,11 +355,6 @@
             <div id="experience-container"></div>
         </section>
 
-        <section id="education">
-            <h2>// Education</h2>
-            <div id="education-container"></div>
-        </section>
-
         <section id="projects">
             <h2>// Projects</h2>
             <div id="projects-container"></div>
@@ -368,6 +363,11 @@
         <section id="skills">
             <h2>// Skills</h2>
             <div id="skills-container" class="tags-container"></div>
+        </section>
+
+        <section id="education">
+            <h2>// Education</h2>
+            <div id="education-container"></div>
         </section>
 
         <section id="affiliations">
@@ -382,9 +382,9 @@
             </div>
         </section>
 
-        <section id="bibliography">
-            <h2>// Bibliography</h2>
-            <ul id="bibliography-container" class="standard-text-list" style="display: block;"></ul>
+        <section id="publications">
+            <h2>// Publications</h2>
+            <ul id="publications-container" class="standard-text-list" style="display: block;"></ul>
         </section>
 
     </main>
@@ -470,36 +470,6 @@
             });
         }
 
-        // --- RENDER EDUCATION ---
-        const eduContainer = document.getElementById("education-container");
-        if (cvData.education) {
-            cvData.education.forEach(edu => {
-                const entityHTML = edu.url 
-                    ? `<a href="${edu.url}" target="_blank" class="entity-link click-prevent">${edu.university}</a>` 
-                    : `<span class="entity-link entity-no-link">${edu.university}</span>`;
-
-                // Render bullets exactly like experience
-                const bulletsHTML = edu.bullets && edu.bullets.length > 0 ? `<ul>${edu.bullets.map(b => `<li>${b}</li>`).join('')}</ul>` : '';
-
-                eduContainer.innerHTML += `
-                    <details>
-                        <summary>
-                            <div class="summary-left">
-                                <span class="role-title">${edu.degree}</span> 
-                                ${entityHTML}
-                            </div>
-                            <div class="summary-right">
-                                <span class="role-date">${edu.date}</span>
-                            </div>
-                        </summary>
-                        <div class="details-content">
-                            ${bulletsHTML}
-                        </div>
-                    </details>
-                `;
-            });
-        }
-
         // --- RENDER PROJECTS ---
         const projContainer = document.getElementById("projects-container");
         if (cvData.projects) {
@@ -538,24 +508,6 @@
             });
         }
 
-        // --- INTERACTION LOGIC: STANDARD LINKS ---
-        document.querySelectorAll('.click-prevent').forEach(link => {
-            link.addEventListener('click', (e) => e.stopPropagation());
-        });
-
-        // --- INTERACTION LOGIC: PROJECT LINKS (DOUBLE-TAP TO GO) ---
-        document.querySelectorAll('.project-link').forEach(link => {
-            link.addEventListener('click', (e) => {
-                const details = link.closest('details');
-                if (!details.open) {
-                    e.preventDefault(); 
-                    details.open = true; 
-                } else {
-                    e.stopPropagation(); 
-                }
-            });
-        });
-
         // --- RENDER SKILLS MAIN SECTION ---
         const skillsContainer = document.getElementById("skills-container");
         if (cvData.skills) {
@@ -581,6 +533,53 @@
                 }
             });
         }
+
+        // --- RENDER EDUCATION ---
+        const eduContainer = document.getElementById("education-container");
+        if (cvData.education) {
+            cvData.education.forEach(edu => {
+                const entityHTML = edu.url 
+                    ? `<a href="${edu.url}" target="_blank" class="entity-link click-prevent">${edu.university}</a>` 
+                    : `<span class="entity-link entity-no-link">${edu.university}</span>`;
+
+                const bulletsHTML = edu.bullets && edu.bullets.length > 0 ? `<ul>${edu.bullets.map(b => `<li>${b}</li>`).join('')}</ul>` : '';
+
+                eduContainer.innerHTML += `
+                    <details>
+                        <summary>
+                            <div class="summary-left">
+                                <span class="role-title">${edu.degree}</span> 
+                                ${entityHTML}
+                            </div>
+                            <div class="summary-right">
+                                <span class="role-date">${edu.date}</span>
+                            </div>
+                        </summary>
+                        <div class="details-content">
+                            ${bulletsHTML}
+                        </div>
+                    </details>
+                `;
+            });
+        }
+
+        // --- INTERACTION LOGIC: STANDARD LINKS ---
+        document.querySelectorAll('.click-prevent').forEach(link => {
+            link.addEventListener('click', (e) => e.stopPropagation());
+        });
+
+        // --- INTERACTION LOGIC: PROJECT LINKS (DOUBLE-TAP TO GO) ---
+        document.querySelectorAll('.project-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const details = link.closest('details');
+                if (!details.open) {
+                    e.preventDefault(); 
+                    details.open = true; 
+                } else {
+                    e.stopPropagation(); 
+                }
+            });
+        });
 
         // --- RENDER AFFILIATIONS ---
         const affContainer = document.getElementById("affiliations-container");
@@ -612,12 +611,12 @@
             });
         }
 
-        // --- RENDER BIBLIOGRAPHY ---
-        const bibContainer = document.getElementById("bibliography-container");
+        // --- RENDER PUBLICATIONS ---
+        const pubContainer = document.getElementById("publications-container");
         if (cvData.bibliography) {
             cvData.bibliography.forEach(item => {
                 const formattedItem = item.replace('Frecer, R.', '<strong>Frecer, R.</strong>');
-                bibContainer.innerHTML += `<li style="display: block;">${formattedItem}</li>`;
+                pubContainer.innerHTML += `<li style="display: block;">${formattedItem}</li>`;
             });
         }
 
