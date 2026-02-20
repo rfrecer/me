@@ -1,33 +1,35 @@
 const cvData = {
     personal: {
+        profilePic: "assets/profile.png",
         email: "r.frecer@gmail.com",
+        github: "https://github.com/rfrecer",
         linkedin: "https://www.linkedin.com/in/robert-frecer-924561169",
         academia: "https://cuni.academia.edu/RobertFrecer",
         goodreads: "https://www.goodreads.com/author/show/8585122.Robert_Frecer"
     },
 
     skills: [
-        { name: "Strategic planning", color: "green" },
-        { name: "Cost-benefit analysis", color: "green" },
-        { name: "Process engineering", color: "green" },
-        { name: "Project management", color: "blue" },
-        { name: "Process implementation", color: "blue" },
-        { name: "Roman archaeology", color: "brown" },
-        { name: "Ancient economy", color: "brown" },
-        { name: "React.js", color: "gray" },
-        { name: "Frontend design", color: "gray" },
-        { name: "SQL", color: "gray" },
-        { name: "Notion", color: "gray" },
-        { name: "UI design", color: "gray" },
-        { name: "Google Workspace", color: "gray" },
-        { name: "Figma", color: "gray" },
-        { name: "Performance evaluation", color: "yellow" },
-        { name: "University teaching", color: "yellow" },
-        { name: "Site operations", color: "default" },
-        { name: "Hiring", color: "default" },
-        { name: "Legal compliance", color: "default" },
-        { name: "Customer experience", color: "orange" },
-        { name: "Copywriting", color: "orange" }
+        { id: "strat_plan", name: "Strategic planning", color: "green" },
+        { id: "cost_ben", name: "Cost-benefit analysis", color: "green" },
+        { id: "proc_eng", name: "Process engineering", color: "green" },
+        { id: "proj_man", name: "Project management", color: "blue" },
+        { id: "proc_imp", name: "Process implementation", color: "blue" },
+        { id: "rom_arch", name: "Roman archaeology", color: "brown" },
+        { id: "anc_econ", name: "Ancient economy", color: "brown" },
+        { id: "react", name: "React.js", color: "gray" },
+        { id: "front_des", name: "Frontend design", color: "gray" },
+        { id: "sql", name: "SQL", color: "gray" },
+        { id: "notion", name: "Notion", color: "gray" },
+        { id: "ui_des", name: "UI design", color: "gray" },
+        { id: "g_workspace", name: "Google Workspace", color: "gray" },
+        { id: "figma", name: "Figma", color: "gray" },
+        { id: "perf_eval", name: "Performance evaluation", color: "yellow" },
+        { id: "uni_teach", name: "University teaching", color: "yellow" },
+        { id: "site_ops", name: "Site operations", color: "default" },
+        { id: "hiring", name: "Hiring", color: "default" },
+        { id: "legal_comp", name: "Legal compliance", color: "default" },
+        { id: "cx", name: "Customer experience", color: "orange" },
+        { id: "copywriting", name: "Copywriting", color: "orange" }
     ],
 
     experience: [
@@ -44,15 +46,8 @@ const cvData = {
                 "Initiated and directed an overhaul of brand identity and communication strategy"
             ],
             tags: [
-                { name: "Process engineering", color: "green" },
-                { name: "Strategic planning", color: "green" },
-                { name: "Project management", color: "blue" },
-                { name: "Notion", color: "gray" },
-                { name: "Process implementation", color: "blue" },
-                { name: "React.js", color: "gray" },
-                { name: "Performance evaluation", color: "blue" },
-                { name: "Google Workspace", color: "gray" },
-                { name: "Figma", color: "gray" }
+                "proc_eng", "strat_plan", "proj_man", "notion", "proc_imp", 
+                "react", "perf_eval", "g_workspace", "figma"
             ]
         },
         {
@@ -65,11 +60,7 @@ const cvData = {
                 "Managed the Czech corporate entity with full legal, payroll and regulatory responsibilities"
             ],
             tags: [
-                { name: "Site operations", color: "default" },
-                { name: "Performance evaluation", color: "yellow" },
-                { name: "Process implementation", color: "blue" },
-                { name: "Legal compliance", color: "default" },
-                { name: "Google Workspace", color: "gray" }
+                "site_ops", "perf_eval", "proc_imp", "legal_comp", "g_workspace"
             ]
         },
         {
@@ -83,10 +74,7 @@ const cvData = {
                 "Acted in various roles as VOC, stakeholder and product owner for API integrations with internal and external engineering teams"
             ],
             tags: [
-                { name: "Performance evaluation", color: "yellow" },
-                { name: "Project management", color: "blue" },
-                { name: "Strategic planning", color: "green" },
-                { name: "Google Workspace", color: "gray" }
+                "perf_eval", "proj_man", "strat_plan", "g_workspace"
             ]
         },
         {
@@ -101,10 +89,7 @@ const cvData = {
                 "Managed API integrations with key partners, including printers and external vendors."
             ],
             tags: [
-                { name: "Hiring", color: "default" },
-                { name: "Cost-benefit analysis", color: "green" },
-                { name: "Project management", color: "blue" },
-                { name: "Google Workspace", color: "gray" }
+                "hiring", "cost_ben", "proj_man", "g_workspace"
             ]
         },
         {
@@ -117,9 +102,7 @@ const cvData = {
                 "Drove UI redesign of internal dashboards and tools to raise operational efficiency by 80%"
             ],
             tags: [
-                { name: "Customer experience", color: "orange" },
-                { name: "UI design", color: "gray" },
-                { name: "Copywriting", color: "orange" }
+                "cx", "ui_des", "copywriting"
             ]
         },
         {
@@ -131,9 +114,7 @@ const cvData = {
                 "Taught undergraduate courses Studies in the Ancient Economy and Roman Archaeology at the Institute of Classical Archaeology (Faculty of Arts)"
             ],
             tags: [
-                { name: "University teaching", color: "yellow" },
-                { name: "Roman archaeology", color: "brown" },
-                { name: "Ancient economy", color: "brown" }
+                "uni_teach", "rom_arch", "anc_econ"
             ]
         },
         {
@@ -177,39 +158,40 @@ const cvData = {
             title: "Terez Frecerová Portfolio",
             url: "https://terezfrecerova.sk/",
             date: "2026",
+            image: "assets/terez-frecerova-2.jpg",
             description: "Artist portfolio website for singer, songwriter and author Terez Frecerová.",
             tags: [
-                { name: "React.js", color: "gray" },
-                { name: "Frontend design", color: "gray" }
+                "react", "front_des"
             ]
         },
         {
             title: "Sustainable Landscape for Integrated Management",
             url: "https://gisat.github.io/app-slim-maps/",
             date: "2023 – 2024",
+            image: "assets/slim-2.jpg",
             description: "A series of geospatial products showing the dynamics of landscape change and risk of natural disasters such as floods, wildfires and drought, in Zambia. Services were developed in close cooperation with Zambian government and public institutions through in-person user research, validation, and training. The project was funded by CzechAid.",
             tags: [
-                { name: "React.js", color: "gray" },
-                { name: "Frontend design", color: "gray" }
+                "react", "front_des"
             ]
         },
         {
             title: "Špaňodolinské granty",
             url: "https://rfrecer.github.io/spanodolinske-granty/",
             date: "2025",
+            image: "assets/granty-1.jpg",
             description: "A map of traditional waterwells in the historical mining village of Špania Dolina, Slovakia. This medieval network of mountain streams was engineered to supply the village with drinking water but has recently mostly dried out or become polluted. The project aims to initiate restoration efforts of this unique water source, its importance highlighted by recent years of drought caused by climate change.",
             tags: [
-                { name: "Frontend design", color: "gray" }
+                "front_des"
             ]
         },
         {
             title: "Archaeological Fieldwork & Research",
             url: "",
             date: "2009 – 2015",
+            image: "assets/archaeology-2.jpg",
             description: "Directed international archaeological excavations and surveys across Slovakia, Sicily, and Bulgaria. Key achievements include the discovery of Roman-style buildings and a Celtic coin hoard at Bratislava Castle, the comprehensive study and publication of Roman lamps from Gerulata, and the mapping of ancient city walls in Eryx, Sicily. This fieldwork required rigorous project management, cross-border academic collaboration, and extensive data analysis.",
             tags: [
-                { name: "Roman archaeology", color: "brown" },
-                { name: "Ancient economy", color: "brown" }
+                "rom_arch", "anc_econ"
             ]
         }
     ],

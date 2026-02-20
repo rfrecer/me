@@ -48,6 +48,15 @@
         /* Sidebar Styles */
         .sidebar { display: flex; flex-direction: column; gap: 2rem; }
 
+        .profile-pic {
+            width: 110px;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border-color);
+        }
+
         .profile-header h1 { font-family: var(--font-sans); font-size: 2rem; font-weight: 600; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
         .bio { font-size: 0.95rem; color: var(--text-muted); }
         
@@ -57,12 +66,12 @@
             top: 4rem;
             display: flex;
             flex-direction: column;
-            gap: 2.5rem; /* Space between contact and nav */
+            gap: 2.5rem;
         }
 
         .contact-links { display: flex; flex-direction: column; gap: 0.25rem; font-family: var(--font-mono); font-size: 0.85rem; }
-        .contact-links a { text-decoration: none; color: var(--text-main); border-bottom: 1px dashed var(--text-muted); width: fit-content; }
-        .contact-links a:hover { border-bottom-style: solid; }
+        .contact-links a { text-decoration: none; color: var(--text-main); border-bottom: 1px dashed var(--text-muted); width: fit-content; transition: border-bottom-color 0.2s; }
+        .contact-links a:hover { border-bottom-style: solid; border-bottom-color: var(--text-main); }
         
         .nav-links { 
             display: flex; 
@@ -79,7 +88,6 @@
         /* Main Content Styles */
         .content { display: flex; flex-direction: column; gap: 5rem; }
 
-        /* Added scroll-margin-top to prevent anchor links from cutting off headings */
         section { scroll-margin-top: 5rem; }
 
         section h2 {
@@ -93,15 +101,29 @@
         .details-content ul { padding-left: 1.5rem; margin-bottom: 1rem; }
         .details-content li { margin-bottom: 0.5rem; }
 
+        /* Project Assets */
+        .project-asset {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
         /* Toggles / Dropdowns (Experience, Edu, Projects) */
-        details { margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem; }
+        details { 
+            margin-bottom: 1.5rem; 
+            border-bottom: 1px solid var(--border-color); 
+            padding-bottom: 1.5rem; 
+        }
+
         summary { 
             cursor: pointer; list-style: none; display: flex; 
             justify-content: space-between; align-items: flex-start; gap: 1rem; 
         }
         summary::-webkit-details-marker { display: none; }
         
-        /* Stacks the Title and the Link vertically */
         .summary-left { display: flex; flex-direction: column; gap: 0.25rem; flex: 1; }
         
         .role-title { font-family: var(--font-sans); font-size: 1.1rem; font-weight: 600; color: var(--text-main); }
@@ -141,16 +163,74 @@
         /* Languages Grid */
         .language-list { font-size: 0.95rem; display: flex; flex-direction: column; gap: 0.75rem; color: var(--text-muted); }
         .language-item { display: flex; align-items: center; gap: 1rem; }
-        .language-name { width: 70px; color: var(--text-muted); font-weight: 600; } /* Fixed width acts as a grid column */
+        .language-name { width: 70px; color: var(--text-muted); font-weight: 600; } 
 
+        /* Mobile Footer (Hidden on Desktop) */
+        .mobile-footer { display: none; }
+
+        /* --- MOBILE RESPONSIVE RULES --- */
         @media (max-width: 800px) {
-            .container { grid-template-columns: 1fr; padding: 2rem 1.5rem; gap: 3rem; }
+            /* Extra bottom padding to account for the sticky footer */
+            .container { grid-template-columns: 1fr; padding: 2rem 1.5rem 6rem 1.5rem; gap: 3rem; }
             .sidebar { position: relative; top: 0; }
             .sticky-panel { position: static; gap: 1.5rem; }
             .nav-links { display: none; }
-            summary { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+            
+            /* Scaled down vertical padding */
+            .content { gap: 3rem; }
+            section { scroll-margin-top: 3rem; }
+            details { margin-bottom: 1rem; padding-bottom: 1rem; }
+            
+            /* Accordion Mobile Restructure & Naked Toggles */
+            summary { 
+                flex-direction: column; 
+                align-items: flex-start; 
+                gap: 0.25rem; 
+                position: relative; 
+                padding-right: 1.5rem; /* Make room for the pseudo-element toggle */
+            }
+            .summary-left { gap: 0.15rem; }
             .role-date { margin-left: 0; text-align: left; }
+            
+            /* Pure CSS Naked Mobile Toggle Icons */
+            summary::after {
+                content: '+';
+                position: absolute;
+                top: 0.1rem; 
+                right: 0;
+                font-family: var(--font-mono);
+                font-size: 1.2rem;
+                color: var(--text-muted);
+            }
+            details[open] summary::after {
+                content: '-';
+                color: var(--text-main);
+            }
+
             .split-section { grid-template-columns: 1fr; gap: 3rem; }
+
+            /* Sticky Mobile Footer: Inverted Stark */
+            .mobile-footer {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                background-color: var(--text-main); /* Black background */
+                padding: 1rem 1.5rem;
+                font-family: var(--font-mono);
+                font-size: 0.85rem;
+                z-index: 1000;
+            }
+            .mobile-footer a {
+                color: #ffffff; /* White text */
+                text-decoration: none;
+            }
+            .mobile-footer .mf-email {
+                border-bottom: 1px dashed #666666; /* Muted dash for contrast */
+            }
         }
     </style>
 </head>
@@ -159,6 +239,7 @@
 <div class="container">
     <aside class="sidebar">
         <div class="profile-header">
+            <img src="assets/profile.png" alt="Robert Frecer" class="profile-pic" id="dynamic-profile-pic">
             <h1>Robert Frecer, PhD</h1>
         </div>
         
@@ -228,32 +309,62 @@
     </main>
 </div>
 
+<div class="mobile-footer" id="mobile-footer">
+    </div>
+
 <script src="data.js"></script>
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         if (typeof cvData === 'undefined') { console.error("data.js is missing."); return; }
 
+        // --- RENDER PROFILE PIC ---
+        const profilePicEl = document.getElementById("dynamic-profile-pic");
+        if (cvData.personal && cvData.personal.profilePic) {
+            profilePicEl.src = cvData.personal.profilePic;
+        }
+
         // --- RENDER CONTACT INFO ---
         const contactContainer = document.getElementById("contact-container");
+        const mobileFooter = document.getElementById("mobile-footer");
+        
         if (cvData.personal) {
+            // Dynamically build social links array
+            let socialLinks = [];
+            if (cvData.personal.github) socialLinks.push(`<a href="${cvData.personal.github}" target="_blank">GitHub</a>`);
+            if (cvData.personal.linkedin) socialLinks.push(`<a href="${cvData.personal.linkedin}" target="_blank">LinkedIn</a>`);
+            if (cvData.personal.academia) socialLinks.push(`<a href="${cvData.personal.academia}" target="_blank">Academia</a>`);
+            if (cvData.personal.goodreads) socialLinks.push(`<a href="${cvData.personal.goodreads}" target="_blank">Goodreads</a>`);
+
+            // Inject Desktop Contact Block
             contactContainer.innerHTML = `
                 <a href="mailto:${cvData.personal.email}">${cvData.personal.email}</a>
                 <div style="display: flex; gap: 1rem; margin-top: 0.25rem;">
-                    <a href="${cvData.personal.linkedin}" target="_blank">LinkedIn</a>
-                    <a href="${cvData.personal.academia}" target="_blank">Academia</a>
-                    <a href="${cvData.personal.goodreads}" target="_blank">Goodreads</a>
+                    ${socialLinks.join('')}
                 </div>
             `;
+            
+            // Inject Mobile Sticky Footer
+            mobileFooter.innerHTML = `
+                <a href="mailto:${cvData.personal.email}" class="mf-email">${cvData.personal.email}</a>
+                <a href="#top" class="mf-top">↑ Top</a>
+            `;
         }
+
+        // --- HELPER FUNCTION: Get Skill Object by ID ---
+        const getSkill = (tagId) => cvData.skills.find(s => s.id === tagId);
 
         // --- RENDER EXPERIENCE ---
         const expContainer = document.getElementById("experience-container");
         if (cvData.experience) {
             cvData.experience.forEach(job => {
                 const bulletsHTML = job.bullets && job.bullets.length > 0 ? `<ul>${job.bullets.map(b => `<li>${b}</li>`).join('')}</ul>` : '';
-                // Dynamic inline tags for entries
-                const tagsHTML = job.tags && job.tags.length > 0 ? `<div class="skills-row" style="margin-top: 1.5rem;">${job.tags.map(t => `<span class="tag ${t.color}">${t.name}</span>`).join('')}</div>` : '';
+                
+                // Dynamically pull full skill objects via ID matching
+                const tagsHTML = job.tags && job.tags.length > 0 ? `<div class="skills-row" style="margin-top: 1.5rem;">${job.tags.map(tagId => {
+                    const skill = getSkill(tagId);
+                    return skill ? `<span class="tag ${skill.color}">${skill.name}</span>` : '';
+                }).join('')}</div>` : '';
                 
                 const entityHTML = job.url 
                     ? `<a href="${job.url}" target="_blank" class="entity-link click-prevent">${job.company}</a>` 
@@ -306,10 +417,17 @@
         const projContainer = document.getElementById("projects-container");
         if (cvData.projects) {
             cvData.projects.forEach(proj => {
-                const tagsHTML = proj.tags && proj.tags.length > 0 ? `<div class="skills-row" style="margin-top: 1.5rem;">${proj.tags.map(t => `<span class="tag ${t.color}">${t.name}</span>`).join('')}</div>` : '';
+                const tagsHTML = proj.tags && proj.tags.length > 0 ? `<div class="skills-row" style="margin-top: 1.5rem;">${proj.tags.map(tagId => {
+                    const skill = getSkill(tagId);
+                    return skill ? `<span class="tag ${skill.color}">${skill.name}</span>` : '';
+                }).join('')}</div>` : '';
                 
                 const entityHTML = proj.url 
                     ? `<a href="${proj.url}" target="_blank" class="entity-link click-prevent">${proj.url.replace(/^https?:\/\//, '')}</a>` 
+                    : '';
+                
+                const imageHTML = proj.image 
+                    ? `<img src="${proj.image}" alt="Screenshot of ${proj.title}" class="project-asset">` 
                     : '';
 
                 projContainer.innerHTML += `
@@ -322,6 +440,7 @@
                             <span class="role-date">${proj.date}</span>
                         </summary>
                         <div class="details-content">
+                            ${imageHTML}
                             ${proj.description ? `<p>${proj.description}</p>` : ''}
                             ${tagsHTML}
                         </div>
@@ -338,7 +457,6 @@
         // --- RENDER SKILLS MAIN SECTION (GROUPED BY COLOR BY ROW) ---
         const skillsContainer = document.getElementById("skills-container");
         if (cvData.skills) {
-            // Target ordering to mimic the original Notion layout
             const colorOrder = ["green", "blue", "brown", "gray", "yellow", "default", "orange"];
             const groupedSkills = {};
             
@@ -405,7 +523,6 @@
         const sections = document.querySelectorAll("main section");
         const navLinks = document.querySelectorAll(".nav-links a.nav-link");
         
-        // The rootMargin creates an invisible tripwire near the top of the viewport
         const observerOptions = { root: null, rootMargin: "-15% 0px -80% 0px", threshold: 0 };
 
         const observer = new IntersectionObserver((entries) => {
