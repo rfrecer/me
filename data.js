@@ -161,6 +161,17 @@ const cvData = {
 
     projects: [
         {
+            title: "Gisat Website",
+            url: "https://gisat.github.io/gisat-website",
+            date: "2026",
+            thumbnail: "assets/gisat-1.jpg",
+            image: "assets/gisat-2.jpg",
+            description: "Company website for Gisat, a remote sensing private company based in Prague, Czech Republic.",
+            tags: [
+                "react", "front_des"
+            ]
+        },
+        {
             title: "Terez Frecerová Portfolio",
             url: "https://terezfrecerova.sk/",
             date: "2026",
