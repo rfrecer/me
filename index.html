@@ -79,14 +79,14 @@
         /* Main Content Styles */
         .content { display: flex; flex-direction: column; gap: 5rem; }
 
+        /* Added scroll-margin-top to prevent anchor links from cutting off headings */
+        section { scroll-margin-top: 5rem; }
+
         section h2 {
             font-family: var(--font-mono); font-size: 1rem; font-weight: 500; text-transform: uppercase;
             letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 2rem;
             border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;
         }
-        
-        /* Side-by-Side Headings */
-        section h3 { font-family: var(--font-sans); font-size: 0.95rem; margin-bottom: 1rem; color: var(--text-main); font-weight: 600; }
 
         /* Generic Content Formatting */
         .details-content { font-size: 0.95rem; color: var(--text-muted); padding-top: 1rem; }
@@ -106,10 +106,10 @@
         
         .role-title { font-family: var(--font-sans); font-size: 1.1rem; font-weight: 600; color: var(--text-main); }
         
-        .entity-link { font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-main); text-decoration: none; border-bottom: 1px dashed var(--text-muted); transition: color 0.2s; width: fit-content; }
-        .entity-link:hover { border-bottom-style: solid; }
+        .entity-link { font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-main); text-decoration: none; border-bottom: 1px dashed var(--text-muted); transition: border-bottom-color 0.2s; width: fit-content; }
+        .entity-link:hover { border-bottom-style: solid; border-bottom-color: var(--text-main); }
         .entity-no-link { border-bottom: none; cursor: default; }
-        .entity-no-link:hover { color: var(--text-main); border-bottom: none; }
+        .entity-no-link:hover { border-bottom: none; }
 
         .role-date { 
             font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted); 
@@ -119,12 +119,16 @@
         /* 2-Column Split for Affiliations & Languages */
         .split-section { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
 
-        /* Standard text lists (Affiliations, Bibliography) */
+        /* Affiliations Grid */
         .standard-text-list { list-style-type: none; font-size: 0.95rem; color: var(--text-muted); }
-        .standard-text-list li { margin-bottom: 1rem; display: flex; gap: 0.75rem; align-items: flex-start; }
+        .standard-text-list li { margin-bottom: 1rem; display: flex; gap: 1rem; align-items: flex-start; }
+        .aff-emoji { flex-shrink: 0; font-size: 1.1rem; }
+        .aff-text { flex: 1; }
 
         /* Skill Tags */
-        .tags-container { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+        .tags-container { display: flex; flex-direction: column; gap: 0.5rem; }
+        .skills-row { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+        
         .tag { font-family: var(--font-mono); font-size: 0.75rem; padding: 0.25rem 0.6rem; border-radius: 4px; font-weight: 500; height: fit-content; }
         .tag.green { background-color: var(--tag-green-bg); color: var(--tag-green-txt); }
         .tag.blue { background-color: var(--tag-blue-bg); color: var(--tag-blue-txt); }
@@ -134,10 +138,10 @@
         .tag.orange { background-color: var(--tag-orange-bg); color: var(--tag-orange-txt); }
         .tag.default { background-color: var(--tag-default-bg); color: var(--tag-default-txt); border: 1px solid #e0e0e0; padding: 0.2rem 0.5rem; }
 
-        /* Languages List */
+        /* Languages Grid */
         .language-list { font-size: 0.95rem; display: flex; flex-direction: column; gap: 0.75rem; color: var(--text-muted); }
-        .language-item { display: flex; align-items: center; gap: 0.75rem; }
-        .language-item strong { color: var(--text-main); font-weight: 500; }
+        .language-item { display: flex; align-items: center; gap: 1rem; }
+        .language-name { width: 70px; color: var(--text-muted); font-weight: 600; } /* Fixed width acts as a grid column */
 
         @media (max-width: 800px) {
             .container { grid-template-columns: 1fr; padding: 2rem 1.5rem; gap: 3rem; }
@@ -208,11 +212,9 @@
             <h2>// Affiliations & Languages</h2>
             <div class="split-section">
                 <div class="split-col">
-                    <h3>Affiliations</h3>
                     <ul id="affiliations-container" class="standard-text-list"></ul>
                 </div>
                 <div class="split-col">
-                    <h3>Languages</h3>
                     <div id="languages-container" class="language-list"></div>
                 </div>
             </div>
@@ -250,7 +252,8 @@
         if (cvData.experience) {
             cvData.experience.forEach(job => {
                 const bulletsHTML = job.bullets && job.bullets.length > 0 ? `<ul>${job.bullets.map(b => `<li>${b}</li>`).join('')}</ul>` : '';
-                const tagsHTML = job.tags && job.tags.length > 0 ? `<div class="tags-container" style="margin-top: 1.5rem;">${job.tags.map(t => `<span class="tag ${t.color}">${t.name}</span>`).join('')}</div>` : '';
+                // Dynamic inline tags for entries
+                const tagsHTML = job.tags && job.tags.length > 0 ? `<div class="skills-row" style="margin-top: 1.5rem;">${job.tags.map(t => `<span class="tag ${t.color}">${t.name}</span>`).join('')}</div>` : '';
                 
                 const entityHTML = job.url 
                     ? `<a href="${job.url}" target="_blank" class="entity-link click-prevent">${job.company}</a>` 
@@ -303,7 +306,7 @@
         const projContainer = document.getElementById("projects-container");
         if (cvData.projects) {
             cvData.projects.forEach(proj => {
-                const tagsHTML = proj.tags && proj.tags.length > 0 ? `<div class="tags-container" style="margin-top: 1.5rem;">${proj.tags.map(t => `<span class="tag ${t.color}">${t.name}</span>`).join('')}</div>` : '';
+                const tagsHTML = proj.tags && proj.tags.length > 0 ? `<div class="skills-row" style="margin-top: 1.5rem;">${proj.tags.map(t => `<span class="tag ${t.color}">${t.name}</span>`).join('')}</div>` : '';
                 
                 const entityHTML = proj.url 
                     ? `<a href="${proj.url}" target="_blank" class="entity-link click-prevent">${proj.url.replace(/^https?:\/\//, '')}</a>` 
@@ -332,27 +335,47 @@
             link.addEventListener('click', (e) => e.stopPropagation());
         });
 
-        // --- RENDER SKILLS MAIN SECTION ---
+        // --- RENDER SKILLS MAIN SECTION (GROUPED BY COLOR BY ROW) ---
         const skillsContainer = document.getElementById("skills-container");
         if (cvData.skills) {
+            // Target ordering to mimic the original Notion layout
+            const colorOrder = ["green", "blue", "brown", "gray", "yellow", "default", "orange"];
+            const groupedSkills = {};
+            
+            colorOrder.forEach(color => groupedSkills[color] = []);
+            
             cvData.skills.forEach(skill => {
-                skillsContainer.innerHTML += `<span class="tag ${skill.color}">${skill.name}</span>`;
+                if (groupedSkills[skill.color]) {
+                    groupedSkills[skill.color].push(skill);
+                }
+            });
+
+            colorOrder.forEach(color => {
+                if (groupedSkills[color].length > 0) {
+                    const rowDiv = document.createElement('div');
+                    rowDiv.className = 'skills-row';
+                    groupedSkills[color].forEach(skill => {
+                        rowDiv.innerHTML += `<span class="tag ${skill.color}">${skill.name}</span>`;
+                    });
+                    skillsContainer.appendChild(rowDiv);
+                }
             });
         }
 
-        // --- RENDER AFFILIATIONS & LANGUAGES ---
+        // --- RENDER AFFILIATIONS (GRID ALIGNED) ---
         const affContainer = document.getElementById("affiliations-container");
         if (cvData.affiliations) {
             cvData.affiliations.forEach(aff => {
                 affContainer.innerHTML += `
                     <li>
-                        <span>${aff.emoji}</span>
-                        <span>${aff.text}</span>
+                        <span class="aff-emoji">${aff.emoji}</span>
+                        <span class="aff-text">${aff.text}</span>
                     </li>
                 `;
             });
         }
 
+        // --- RENDER LANGUAGES (GRID ALIGNED NO DASH) ---
         const langContainer = document.getElementById("languages-container");
         if (cvData.languages) {
             cvData.languages.forEach(lang => {
@@ -362,8 +385,7 @@
 
                 langContainer.innerHTML += `
                     <div class="language-item">
-                        <strong>${lang.language}</strong>
-                        <span style="color: var(--text-muted);">&mdash;</span>
+                        <span class="language-name">${lang.language}</span>
                         <span class="tag ${colorClass}">${lang.proficiency}</span>
                     </div>
                 `;
@@ -379,10 +401,12 @@
             });
         }
 
-        // --- SCROLLSPY NAVIGATION ---
+        // --- SCROLLSPY NAVIGATION WITH "TRIPWIRE" LOGIC ---
         const sections = document.querySelectorAll("main section");
         const navLinks = document.querySelectorAll(".nav-links a.nav-link");
-        const observerOptions = { root: null, rootMargin: "0px", threshold: 0.2 };
+        
+        // The rootMargin creates an invisible tripwire near the top of the viewport
+        const observerOptions = { root: null, rootMargin: "-15% 0px -80% 0px", threshold: 0 };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
