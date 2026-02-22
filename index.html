@@ -207,10 +207,18 @@
         .split-section { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
 
         /* Affiliations Grid */
-        .standard-text-list { list-style-type: none; font-size: 0.95rem; color: var(--text-muted); }
-        .standard-text-list li { margin-bottom: 1rem; display: flex; gap: 1rem; align-items: flex-start; }
+        .affiliations-list { display: flex; flex-direction: column; gap: 1rem; list-style-type: none; font-size: 0.95rem; color: var(--text-muted); }
+        .affiliations-list li { display: flex; gap: 1rem; align-items: center; }
         .aff-emoji { flex-shrink: 0; font-size: 1.1rem; }
         .aff-text { flex: 1; }
+
+        /* Languages Grid */
+        .language-list { display: flex; flex-direction: column; gap: 1rem; font-size: 0.95rem; color: var(--text-muted); }
+        .language-item { display: flex; align-items: center; gap: 1rem; }
+        .language-name { width: 70px; color: var(--text-muted); font-weight: 600; } 
+        
+        /* Publications Grid */
+        .publications-list { display: flex; flex-direction: column; gap: 1rem; list-style-type: none; font-size: 0.95rem; color: var(--text-muted); }
 
         /* Skill Tags */
         .tags-container { display: flex; flex-direction: column; gap: 0.5rem; }
@@ -224,11 +232,6 @@
         .tag.yellow { background-color: var(--tag-yellow-bg); color: var(--tag-yellow-txt); }
         .tag.orange { background-color: var(--tag-orange-bg); color: var(--tag-orange-txt); }
         .tag.default { background-color: var(--tag-default-bg); color: var(--tag-default-txt); border: 1px solid #e0e0e0; padding: 0.2rem 0.5rem; }
-
-        /* Languages Grid */
-        .language-list { font-size: 0.95rem; display: flex; flex-direction: column; gap: 0.75rem; color: var(--text-muted); }
-        .language-item { display: flex; align-items: center; gap: 1rem; }
-        .language-name { width: 70px; color: var(--text-muted); font-weight: 600; } 
 
         /* Mobile Footer (Hidden on Desktop) */
         .mobile-footer { display: none; }
@@ -296,7 +299,8 @@
             }
             .project-details summary::after { display: none; }
 
-            .split-section { grid-template-columns: 1fr; gap: 3rem; }
+            /* Reduced gap for Mobile Affiliations & Languages */
+            .split-section { grid-template-columns: 1fr; gap: 2rem; }
 
             /* Sticky Mobile Footer Styling: Glassmorphism */
             .mobile-footer {
@@ -374,7 +378,7 @@
             <h2>// Affiliations & Languages</h2>
             <div class="split-section">
                 <div class="split-col">
-                    <ul id="affiliations-container" class="standard-text-list"></ul>
+                    <ul id="affiliations-container" class="affiliations-list"></ul>
                 </div>
                 <div class="split-col">
                     <div id="languages-container" class="language-list"></div>
@@ -384,7 +388,7 @@
 
         <section id="publications">
             <h2>// Publications</h2>
-            <ul id="publications-container" class="standard-text-list" style="display: block;"></ul>
+            <ul id="publications-container" class="publications-list"></ul>
         </section>
 
     </main>
