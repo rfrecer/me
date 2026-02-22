@@ -36,7 +36,8 @@ const cvData = {
         { id: "hiring", name: "Hiring", color: "default" },
         { id: "legal_comp", name: "Legal compliance", color: "default" },
         { id: "cx", name: "Customer experience", color: "orange" },
-        { id: "copywriting", name: "Copywriting", color: "orange" }
+        { id: "copywriting", name: "Copywriting", color: "orange" },
+        { id: "legal_trans", name: "Legal & business translation", color: "orange" }
     ],
 
     experience: [
@@ -123,8 +124,9 @@ const cvData = {
             tags: [
                 "uni_teach", "rom_arch", "anc_econ"
             ]
-        },
-        {
+        }
+        /*
+        ,{
             title: "Translator",
             company: "Freelance",
             url: "",
@@ -134,6 +136,7 @@ const cvData = {
             ],
             tags: []
         }
+        */
     ],
 
     education: [
@@ -218,7 +221,7 @@ const cvData = {
             date: "2009 – 2015",
             thumbnail: "assets/archaeology-1.jpg",
             image: "assets/archaeology-2.jpg",
-            description: "Directed international archaeological fieldwork and surveys across Slovakia, Sicily, and Bulgaria between 2009 and 2015. Key fieldwork included uncovering Roman-style buildings and a Celtic coin hoard at Bratislava Castle, surveying the ancient city walls of Eryx, and excavating a Roman settlement near Stroyno. The role required cross-border academic collaboration, complex logistical planning, and the rigorous synthesis and publication of material data, culminating in the comprehensive study of Roman lamps from the cemeteries of Gerulata.",
+            description: "Contributed to archaeological fieldwork across Slovakia, Italy, and Bulgaria between 2009 and 2015. Key projects included uncovering Roman-style buildings and a Celtic coin hoard at Bratislava Castle, surveying the ancient city walls of Eryx in Sicily, and excavating a Roman settlement near Stroyno in Thrace. This field experience culminated in my doctoral dissertation, a comprehensive study of Roman lamps from the cemeteries of Gerulata. I processed the site's previously unpublished artifact corpus through rigorous photo documentation, scale measurements, and stylistic matching against other collections. This material analysis led to a new model of subsidiary lamp production, successfully explaining the making of provincial lamp copies and resolving a long-standing misattribution in the field.",
             tags: [
                 "rom_arch", "anc_econ", "proj_man"
             ]
