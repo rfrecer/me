@@ -72,7 +72,7 @@ const cvData = {
             ]
         },
         {
-            title: "Director of Operations & Customer Experience",
+            title: "Director of Operations & CX",
             company: "Represent.com",
             url: "https://represent.com",
             date: "Jul 2018 – Jan 2023",
@@ -86,7 +86,7 @@ const cvData = {
             ]
         },
         {
-            title: "Head of Customer Experience & Operations",
+            title: "Head of CX & Operations",
             company: "Represent.com",
             url: "https://represent.com",
             date: "Apr 2016 – Jul 2018",
@@ -101,7 +101,7 @@ const cvData = {
             ]
         },
         {
-            title: "Customer Experience Manager",
+            title: "CX Manager",
             company: "Represent.com",
             url: "https://represent.com",
             date: "Mar 2015 – Mar 2016",
@@ -179,7 +179,7 @@ const cvData = {
             image: "assets/gisat-2.jpg",
             description: "Designed and developed a corporate website for a remote sensing firm based in Prague. Built outside of traditional frameworks utilizing Vanilla JS, HTML/CSS, and AI-assisted coding workflows, resulting in a highly modular, data-driven, and resource-efficient architecture.",
             tags: [
-                "ai_dev", "html_css", "git"
+                "ai_dev", "html_css", "git", "copywriting"
             ]
         },
         {
@@ -201,7 +201,7 @@ const cvData = {
             image: "assets/slim-2.jpg",
             description: "Managed the delivery of a suite of geospatial products for the Zambian public sector, funded by CzechAid. Coordinated directly with ministries and agencies on the ground in Zambia to gather user requirements, acting as the primary bridge between stakeholders and two technical teams (Earth Observation data and Web Application development). Prototyped and deployed the initial public-facing landing page to house demo products, ensuring UI/UX consistency, while overseeing the long-term development of the final platform.",
             tags: [
-                "web_mapping", "ui_des"
+                "proj_man", "ai_dev", "git"
             ]
         },
         {
@@ -212,7 +212,7 @@ const cvData = {
             image: "assets/granty-1.jpg",
             description: "An end-to-end solo project mapping traditional waterwells in the historical mining village of Špania Dolina, Slovakia. Managed the complete project lifecycle, including field photography, copywriting, and the development of an interactive web portal built via AI-assisted workflows to highlight the climate-driven degradation of this medieval water network.",
             tags: [
-                "ai_dev", "web_mapping", "copywriting"
+                "ai_dev", "html_css", "git", "web_mapping"
             ]
         },
         {
@@ -223,7 +223,7 @@ const cvData = {
             image: "assets/archaeology-2.jpg",
             description: "Contributed to archaeological fieldwork across Slovakia, Italy, and Bulgaria between 2009 and 2015. Key projects included uncovering Roman-style buildings and a Celtic coin hoard at Bratislava Castle, surveying the ancient city walls of Eryx in Sicily, and excavating a Roman settlement near Stroyno in Thrace.<br><br>My doctoral dissertation was a comprehensive study of Roman lamps from the cemeteries of Gerulata. I processed the site's previously unpublished artifact corpus through rigorous photo documentation, material analysis, and stylistic matching against other collections. My work led to a new model of subsidiary lamp production, successfully explaining the making of provincial lamp copies and resolving a long-standing misunderstanding in the field.",
             tags: [
-                "rom_arch", "anc_econ", "proj_man"
+                "rom_arch", "anc_econ", "proj_man", "uni_teach"
             ]
         }
     ],
