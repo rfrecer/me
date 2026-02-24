@@ -188,7 +188,7 @@ const cvData = {
             date: "2026",
             thumbnail: "assets/terez-frecerova-1.jpg",
             image: "assets/terez-frecerova-2.jpg",
-            description: "Designed, developed, and hosted an artist portfolio website for singer, songwriter, and author Terez Frecerová. Built with a custom design using modern frontend tooling (Vite, Tailwind CSS, React) combined with AI-assisted development protocols.",
+            description: "Designed, developed, and hosted an artist portfolio website for singer, songwriter, and author Terez Frecerová. Built on a custom layout using modern frontend tooling (Vite, Tailwind CSS, React) combined with AI-assisted development protocols.",
             tags: [
                 "ai_dev", "html_css", "git"
             ]
@@ -210,7 +210,7 @@ const cvData = {
             date: "2025",
             thumbnail: "assets/granty-2.jpg",
             image: "assets/granty-1.jpg",
-            description: "An end-to-end solo project mapping traditional waterwells in the historical mining village of Špania Dolina, Slovakia. Managed the complete project lifecycle, including field photography, copywriting, and the development of an interactive web portal built via AI-assisted workflows to highlight the climate-driven degradation of this medieval water network.",
+            description: "An end-to-end solo project mapping traditional waterwells in the historical mining village of Špania Dolina, Slovakia. Managed the complete project lifecycle, including field photography, copywriting, and the development of an interactive map portal built via AI-assisted workflows to highlight the climate-driven degradation of this medieval water network.",
             tags: [
                 "ai_dev", "html_css", "git", "web_mapping"
             ]
