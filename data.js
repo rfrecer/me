@@ -206,7 +206,7 @@ const cvData = {
         },
         {
             title: "Špaňodolinské granty",
-            url: "https://rfrecer.github.io/spanodolinske-granty/",
+            url: "https://spanodolinskegranty.sk/",
             date: "2025",
             thumbnail: "assets/granty-2.jpg",
             image: "assets/granty-1.jpg",
