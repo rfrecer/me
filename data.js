@@ -48,10 +48,10 @@ const cvData = {
             date: "Mar 2023 – present&nbsp;", 
             bullets: [
                 "Designed and implemented new tools and workflows for a 35-member R&D team using Google Workspace and Notion",
-                "Developed and delivered training in project management to employees in management roles",
-                "Led projects delivering EO services to international clients",
                 "Implemented a new performance evaluation framework to foster accountability and ownership",
-                "Initiated and directed an overhaul of brand identity and communication strategy"
+                "Initiated and directed an overhaul of brand identity and communication strategy",
+                "Developed and delivered training in project management to employees in management roles",
+                "Led projects delivering EO services to international clients"
             ],
             tags: [
                 "proc_eng", "strat_plan", "proj_man", "notion", "proc_imp", 
@@ -64,7 +64,7 @@ const cvData = {
             url: "https://represent.com",
             date: "Apr 2022 – Feb 2023",
             bullets: [
-                "Directed all site operations for the Prague office, overseeing a team of approximately 20 employees",
+                "Directed all site operations for the Prague office with a team of approximately 20 employees",
                 "Managed the Czech corporate entity with full legal, payroll and regulatory responsibilities"
             ],
             tags: [
@@ -229,7 +229,7 @@ const cvData = {
     ],
 
     affiliations: [
-        { emoji: "🇺🇸", text: "Benjamin Franklin Transatlantic Fellows Initiative (’06 Alumnus)" },
+        { emoji: "🇺🇸", text: "Benjamin Franklin Transatlantic Fellows '06" },
         { emoji: "🇪🇺", text: "European Association of Archaeologists" },
         { emoji: "🇪🇺", text: "Limes Congress" },
         { emoji: "🇨🇿", text: "Klub Alumni Univerzity Karlovy" }
