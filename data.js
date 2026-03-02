@@ -144,7 +144,7 @@ const cvData = {
             degree: "Doctor of Philosophy (PhD.), Classical Archaeology",
             university: "Charles University",
             url: "https://cuni.cz",
-            date: "Sep 2007 – Jun 2015",
+            date: "Sep 2012 – Jun 2015",
             bullets: [
                 "Doctoral thesis: <a href='https://dspace.cuni.cz/handle/20.500.11956/77969' target='_blank' class='inline-link'>Gerulata: The Lamps. Roman Lamps in a Provincial Context</a>",
                 "Conducted research in the economy of Roman lamps and proposed an original model of production by subsidiary workshops that explained finds of lamp “copies” which had long been misattributed"
