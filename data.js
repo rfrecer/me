@@ -199,7 +199,7 @@ const cvData = {
             date: "2023 – 2024",
             thumbnail: "assets/slim-1.jpg",
             image: "assets/slim-2.jpg",
-            description: "Managed the delivery of a suite of geospatial products for the Zambian public sector, funded by CzechAid. Coordinated directly with ministries and agencies on the ground in Zambia to gather user requirements, acting as the primary bridge between stakeholders and two technical teams (Earth Observation data and Web Application development). Prototyped and deployed the initial public-facing landing page to house demo products, ensuring UI/UX consistency, while overseeing the long-term development of the final platform.",
+            description: "Managed the delivery of a suite of geospatial products for the Zambian public sector, funded by CzechAid. Coordinated with ministries and agencies on the ground in Zambia to gather user requirements, acting as a bridge between stakeholders and two technical teams (Earth Observation data and Web Application development). Prototyped and deployed the initial public-facing landing page to house demo products, ensuring UI/UX consistency, while overseeing the long-term development of the final platform.",
             tags: [
                 "proj_man", "ai_dev", "git"
             ]
