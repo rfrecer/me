@@ -82,7 +82,7 @@ const cvData = {
                 "Acted in various roles as VOC, stakeholder and product owner for API integrations with internal and external engineering teams"
             ],
             tags: [
-                "perf_eval", "proj_man", "strat_plan", "g_workspace"
+                "perf_eval", "proj_man", "sql", "strat_plan", "g_workspace"
             ]
         },
         {
@@ -97,7 +97,7 @@ const cvData = {
                 "Managed API integrations with key partners, including printers and external vendors"
             ],
             tags: [
-                "hiring", "cost_ben", "proj_man", "g_workspace"
+                "hiring", "cost_ben", "sql", "proj_man", "g_workspace"
             ]
         },
         {
