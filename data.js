@@ -173,7 +173,7 @@ const cvData = {
     projects: [
         {
             title: "Gisat Website",
-            url: "https://gisat.cz",
+            url: "https://gisat.cz/",
             date: "2026",
             thumbnail: "assets/gisat-1.jpg",
             image: "assets/gisat-2.jpg",
