@@ -9,8 +9,8 @@ const cvData = {
     },
 
     bio: [
-        "With a decade of operational leadership in technology and merchandising, my work is driven by a need for resource efficiency. I lead high-performing international teams, engineer scalable processes, and direct complex projects ranging from post-merger corporate integrations to delivering geospatial services to governments.",
-        "My background includes a PhD in Classical Archaeology. While tech management requires crafting rigorous systems, archaeology trained me as a pattern matcher who evaluates fragments to see the bigger picture. Whether optimizing a global supply chain or building a team, my approach remains pragmatic. I believe the best solution to every problem is out there, you just have to be willing to find it."
+        "With a decade of operational leadership in technology and merchandising, my work revolves around resource efficiency. I lead high-performing international teams, engineer scalable processes, and direct complex projects ranging from post-merger corporate integrations to delivering geospatial services to governments.",
+        "My background includes a PhD in Classical Archaeology. While tech management requires crafting rigorous systems, archaeology trained me as a pattern matcher who evaluates fragments to see the bigger picture. Whether optimizing a global supply chain or building a team, my approach is pragmatic. I believe the best solution to every problem is out there, you just have to be willing to find it."
     ],
 
     skills: [
