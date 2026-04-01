@@ -17,6 +17,7 @@ const cvData = {
         { id: "strat_plan", name: "Strategic planning", color: "green" },
         { id: "cost_ben", name: "Cost-benefit analysis", color: "green" },
         { id: "proc_eng", name: "Process engineering", color: "green" },
+        { id: "sys_arch", name: "System architecture", color: "green" },
         { id: "proj_man", name: "Project management", color: "blue" },
         { id: "proc_imp", name: "Process implementation", color: "blue" },
         { id: "rom_arch", name: "Roman archaeology", color: "brown" },
@@ -171,6 +172,17 @@ const cvData = {
     ],
 
     projects: [
+        {
+            title: "Spend",
+            url: "https://spend-eight.vercel.app/",
+            date: "2026",
+            thumbnail: "assets/spend-0.png",
+            image: "assets/spend-1.jpg",
+            description: "An offline-first personal finance tracker that abandons traditional chronological ledgers in favor of an epoch-based system driven by actual pay cycles. The application utilizes a strict neo-brutalist design language with custom physics-driven UI mechanics, underpinned by a robust system architecture handling recurring transactions and local conflict resolution.",
+            tags: [
+                "sys_arch", "ui_des", "sql", "ai_dev", "git"
+            ]
+        },
         {
             title: "Gisat Website",
             url: "https://gisat.cz/",
