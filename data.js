@@ -173,7 +173,7 @@ const cvData = {
 
     projects: [
         {
-            title: "Spend: Personal finance tracker",
+            title: "Spend. Personal finance tracker",
             url: "https://spend-eight.vercel.app/",
             date: "2026",
             thumbnail: "assets/spend-0.png",
@@ -184,12 +184,12 @@ const cvData = {
             ]
         },
         {
-            title: "Gisat website",
+            title: "Gisat company website",
             url: "https://gisat.cz/",
             date: "2026",
             thumbnail: "assets/gisat-1.jpg",
             image: "assets/gisat-2.jpg",
-            description: "Designed and developed a corporate website for a remote sensing firm based in Prague. Built using Vanilla JS, HTML/CSS, and AI-assisted coding workflows resulting in a resource-efficient architecture. Revised and wrote site copy for better accessibility.",
+            description: "Designed and developed a website for a remote sensing firm based in Prague. Built using Vanilla JS, HTML/CSS, and AI-assisted coding workflows resulting in a resource-efficient architecture. Revised and wrote site copy for better accessibility.",
             tags: [
                 "ai_dev", "html_css", "git", "copywriting"
             ]
