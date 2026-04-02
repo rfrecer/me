@@ -173,34 +173,34 @@ const cvData = {
 
     projects: [
         {
-            title: "Spend",
+            title: "Spend: Personal finance tracker",
             url: "https://spend-eight.vercel.app/",
             date: "2026",
             thumbnail: "assets/spend-0.png",
             image: "assets/spend-1.jpg",
-            description: "An offline-first personal finance tracker that abandons traditional chronological ledgers in favor of an epoch-based system driven by actual pay cycles. The application utilizes a strict neo-brutalist design language with custom physics-driven UI mechanics, underpinned by a robust system architecture handling recurring transactions and local conflict resolution.",
+            description: "Designed and developed a finance app to track personal income against projected spending in user-determined pay cycles. Built on a system architecture handling transfers, holiday float logic, and recurring transactions, with custom physics-driven UI.",
             tags: [
                 "sys_arch", "ui_des", "sql", "ai_dev", "git"
             ]
         },
         {
-            title: "Gisat Website",
+            title: "Gisat website",
             url: "https://gisat.cz/",
             date: "2026",
             thumbnail: "assets/gisat-1.jpg",
             image: "assets/gisat-2.jpg",
-            description: "Designed and developed a corporate website for a remote sensing firm based in Prague. Built outside of traditional frameworks utilizing Vanilla JS, HTML/CSS, and AI-assisted coding workflows, resulting in a highly modular, data-driven, and resource-efficient architecture.",
+            description: "Designed and developed a corporate website for a remote sensing firm based in Prague. Built using Vanilla JS, HTML/CSS, and AI-assisted coding workflows resulting in a resource-efficient architecture. Revised and wrote site copy for better accessibility.",
             tags: [
                 "ai_dev", "html_css", "git", "copywriting"
             ]
         },
         {
-            title: "Terez Frecerová Portfolio",
+            title: "Terez Frecerová portfolio",
             url: "https://terezfrecerova.sk/",
             date: "2026",
             thumbnail: "assets/terez-frecerova-1.jpg",
             image: "assets/terez-frecerova-2.jpg",
-            description: "Designed, developed, and hosted an artist portfolio website for singer, songwriter, and author Terez Frecerová. Built on a custom layout using modern frontend tooling (Vite, Tailwind CSS, React) combined with AI-assisted development protocols.",
+            description: "Designed, developed, and hosted an artist portfolio website for singer, songwriter, and author Terez Frecerová. Built on a custom layout using modern frontend tooling (Vite, Tailwind CSS, React) combined with the playful attitude of her art and music.",
             tags: [
                 "ai_dev", "html_css", "git"
             ]
@@ -222,13 +222,13 @@ const cvData = {
             date: "2025",
             thumbnail: "assets/granty-2.jpg",
             image: "assets/granty-1.jpg",
-            description: "An end-to-end solo project mapping traditional waterwells in the historical mining village of Špania Dolina, Slovakia. Managed the complete project lifecycle, including field photography, copywriting, and the development of an interactive map portal built via AI-assisted workflows to highlight the climate-driven degradation of this medieval water network.",
+            description: "A project mapping traditional waterwells in the historical mining village of Špania Dolina, Slovakia. Managed the complete project lifecycle, including field photography, copywriting, and the development of an interactive map portal built via AI-assisted workflows to highlight the climate-driven degradation of this medieval water network.",
             tags: [
                 "ai_dev", "html_css", "git", "web_mapping"
             ]
         },
         {
-            title: "Archaeological Fieldwork & Research",
+            title: "Archaeological fieldwork & research",
             url: "",
             date: "2009 – 2015",
             thumbnail: "assets/archaeology-1.jpg",
