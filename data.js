@@ -173,34 +173,34 @@ const cvData = {
 
     projects: [
         {
-            title: "Spend. Personal finance tracker",
+            title: "Spend.",
             url: "https://spend-eight.vercel.app/",
             date: "2026",
             thumbnail: "assets/spend-0.png",
             image: "assets/spend-1.jpg",
-            description: "Designed and developed a finance app to track personal income against projected spending in user-determined pay cycles. Built on a system architecture handling transfers, holiday float logic, and recurring transactions, with custom physics-driven UI.",
+            description: "Designed and developed a personal finance app to track income against projected spending in user-determined pay cycles. Built on a system architecture handling transfers, holiday float logic, and recurring transactions, with custom physics-driven UI.",
             tags: [
                 "sys_arch", "ui_des", "sql", "ai_dev", "git"
             ]
         },
         {
-            title: "Gisat company website",
+            title: "Gisat",
             url: "https://gisat.cz/",
             date: "2026",
             thumbnail: "assets/gisat-1.jpg",
             image: "assets/gisat-2.jpg",
-            description: "Designed and developed a website for a remote sensing firm based in Prague. Built using Vanilla JS, HTML/CSS, and AI-assisted coding workflows resulting in a resource-efficient architecture. Revised and wrote site copy for better accessibility.",
+            description: "Designed and developed a company website for a remote sensing firm based in Prague. Built on a resource-efficient stack of Vanilla JS, HTML/CSS, and using AI-assisted coding workflows. Revised and wrote site copy for better accessibility.",
             tags: [
                 "ai_dev", "html_css", "git", "copywriting"
             ]
         },
         {
-            title: "Terez Frecerová portfolio",
+            title: "Terez Frecerová",
             url: "https://terezfrecerova.sk/",
             date: "2026",
             thumbnail: "assets/terez-frecerova-1.jpg",
             image: "assets/terez-frecerova-2.jpg",
-            description: "Designed, developed, and hosted an artist portfolio website for singer, songwriter, and author Terez Frecerová. Built on a custom layout using modern frontend tooling (Vite, Tailwind CSS, React) combined with the playful attitude of her art and music.",
+            description: "Designed, developed, and hosted an artist portfolio website for singer, songwriter, and author Terez Frecerová. Built with a custom layout on a modern frontend stack (Vite, Tailwind CSS, React) inspired by the playfulness of her art and music.",
             tags: [
                 "ai_dev", "html_css", "git"
             ]
@@ -211,7 +211,7 @@ const cvData = {
             date: "2023 – 2024",
             thumbnail: "assets/slim-1.jpg",
             image: "assets/slim-2.jpg",
-            description: "Managed the delivery of a suite of geospatial products for the Zambian public sector, funded by CzechAid. Coordinated with ministries and agencies on the ground in Zambia to gather user requirements, acting as a bridge between stakeholders and two technical teams (Earth Observation data and Web Application development). Prototyped and deployed the initial public-facing landing page to house demo products, ensuring UI/UX consistency, while overseeing the long-term development of the final platform.",
+            description: "Managed the delivery of a suite of geospatial products for the Zambian public sector, funded by CzechAid. Coordinated with ministries and agencies on the ground in Zambia to gather user requirements, acting as a bridge between stakeholders and technical teams (Earth Observation data and Web Application development). Prototyped and deployed the initial public-facing landing page to house demo products, ensuring UI/UX consistency.",
             tags: [
                 "proj_man", "ai_dev", "git"
             ]
